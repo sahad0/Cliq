@@ -1,4 +1,4 @@
-import { View, Text, Dimensions } from 'react-native'
+import { View, Text, Dimensions, TouchableOpacity, Keyboard } from 'react-native'
 import React, { FC } from 'react'
 import { Header } from '../components/Signup/Header';
 import { SignUpForm } from '../components/Signup/SignUpForm';
@@ -14,9 +14,11 @@ const Signup = ():JSX.Element => {
 
   return (
     <View style={{flex:1,backgroundColor:'white'}}>
-        <Header height={height} width={width} />
-        <SignUpForm height={height} width={width} />
-        <Footer height={height} />
+        <TouchableOpacity onPress={()=>Keyboard.dismiss()} activeOpacity={1}>
+            <Header height={height} width={width} />
+            <SignUpForm height={height} width={width} />
+            <Footer height={height} />
+        </TouchableOpacity>
     </View>
   )
 }
