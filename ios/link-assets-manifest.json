@@ -1,0 +1,57 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/ZohoBlack.ttf",
+      "sha1": "de491e30e51c2afead4debf7cbfd6924726a1f27"
+    },
+    {
+      "path": "src/assets/fonts/ZohoBold Italic.ttf",
+      "sha1": "8cfbefb1a84222699f0e7a8e80a490932a20a27f"
+    },
+    {
+      "path": "src/assets/fonts/ZohoBold.ttf",
+      "sha1": "6a7d0e7bae3cb6eef0a31ac6ff284720329a74a6"
+    },
+    {
+      "path": "src/assets/fonts/ZohoExtrablack.ttf",
+      "sha1": "f9613874424c0bef18fc691506f1ca38894b616e"
+    },
+    {
+      "path": "src/assets/fonts/ZohoExtrabold.ttf",
+      "sha1": "63be6b7cd0ed4cbbebc1a6d28a4c265735f28877"
+    },
+    {
+      "path": "src/assets/fonts/ZohoExtralight.ttf",
+      "sha1": "0cd0afed1817b3709a89d7d9f036d75d08e95f06"
+    },
+    {
+      "path": "src/assets/fonts/ZohoLight.ttf",
+      "sha1": "5943d666814b4e8354b3bbf6abeb63e6fd112f52"
+    },
+    {
+      "path": "src/assets/fonts/ZohoMedium.ttf",
+      "sha1": "b70ea10a95e71725a269d29c48c4e71d5b7ef410"
+    },
+    {
+      "path": "src/assets/fonts/ZohoRegular Italic.ttf",
+      "sha1": "ad69723e3563fbadccbb8730efdd844341ee8ab7"
+    },
+    {
+      "path": "src/assets/fonts/ZohoRegular.ttf",
+      "sha1": "f835e1464461f4ae881569afc00a8d682a2994c9"
+    },
+    {
+      "path": "src/assets/fonts/ZohoSemibold Italic.ttf",
+      "sha1": "16c7c9e526b7b722da59240e7eb94434c81fe918"
+    },
+    {
+      "path": "src/assets/fonts/ZohoSemibold.ttf",
+      "sha1": "39fa1df1ec4e9e3689578645998a330dad5d3a39"
+    },
+    {
+      "path": "src/assets/fonts/ZohoThin.ttf",
+      "sha1": "0103887e149e34b90528557e862ead3fd0b7a67f"
+    }
+  ]
+}
