@@ -36,8 +36,8 @@ export const SignUpForm = ({height,width}:AppProps):JSX.Element => {
             
         </View>
     </View>
-        <TouchableOpacity style={{alignSelf:'center',marginTop:height*0.02,}}>
-            <Text style={{fontFamily:'ZohoRegular',fontSize:height*0.017,backgroundColor:'#f0483e',color:'white',alignSelf:'center',paddingHorizontal:height*0.09,paddingVertical:height*0.024,width:width*0.9,}}>START YOUR FREE TRIAL NOW</Text>
+        <TouchableOpacity style={{paddingHorizontal:height*0.1,backgroundColor:'#f0483e',width:width*0.9,alignSelf:'center',paddingVertical:height*0.02,marginTop:height*0.06}}>
+            <Text style={{color:'white',alignSelf:'center',fontFamily:'ZohoRegular',fontSize:height*0.0155}}>START YOUR FREE TRIAL NOW</Text>
         </TouchableOpacity>
 
         

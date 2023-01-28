@@ -4,7 +4,7 @@ import React, { FC } from 'react'
 
 type AppProps = { height: number,width:number };
 
-export const Header = ({height,width}:AppProps):JSX.Element => {
+export const SignupHeader = ({height,width}:AppProps):JSX.Element => {
 
   return (
     <>

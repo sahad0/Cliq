@@ -1,8 +1,8 @@
-import { View, Text, Dimensions, TouchableOpacity, Keyboard } from 'react-native'
-import React, { FC } from 'react'
-import { Header } from '../components/Signup/Header';
+import { View,Dimensions, TouchableOpacity, Keyboard } from 'react-native'
+import React from 'react'
+import { SignupHeader } from '../components/Signup/SignupHeader';
 import { SignUpForm } from '../components/Signup/SignUpForm';
-import { Footer } from '../components/Signup/Footer';
+import { SignupFooter } from '../components/Signup/SignupFooter';
 
 
 
@@ -15,9 +15,9 @@ const Signup = ():JSX.Element => {
   return (
     <View style={{flex:1,backgroundColor:'white'}}>
         <TouchableOpacity onPress={()=>Keyboard.dismiss()} activeOpacity={1}>
-            <Header height={height} width={width} />
+            <SignupHeader height={height} width={width} />
             <SignUpForm height={height} width={width} />
-            <Footer height={height} />
+            <SignupFooter height={height} />
         </TouchableOpacity>
     </View>
   )

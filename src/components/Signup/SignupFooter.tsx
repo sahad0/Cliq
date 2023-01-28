@@ -5,7 +5,7 @@ import React from 'react'
 
 type AppProps = { height: number };
 
-export const Footer = ({height}:AppProps):JSX.Element => {
+export const SignupFooter = ({height}:AppProps):JSX.Element => {
 
   return (
     <>
