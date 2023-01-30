@@ -1,6 +1,8 @@
-import { View, Text, TextInput, Touchable, TouchableOpacity, Image } from 'react-native'
+import { View, Text, TextInput, Touchable, TouchableOpacity, Image, Button } from 'react-native'
 import React, { useState } from 'react'
 import AuthInput from '../Extra/AuthInput'
+import AuthAnimated from '../Extra/AuthAnimated'
+import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
 
 
 type Props = {
@@ -8,18 +10,37 @@ type Props = {
     width:number,
     navigation:any,
 }
+type Visible = true|false;
+
+type focusBool = true|false;
 
 
 export const LoginForm = ({height,width,navigation}:Props):JSX.Element=> {
 
+  const [visible,setVisible] = useState<Visible>(false);
+  const [focus,setFocus] = useState<focusBool>(false);
 
 
 
 
   return (
     <View style={{marginTop:height*0.07}}>
-
-        <AuthInput height={height} width={width} inputStr='Email Address or Phone Number' btnStr='Next' nvgStr='' navigation={navigation}/>
+      {
+        visible ? 
+        <>
+          
+          <AuthAnimated setVisible={setVisible} height={height} width={width} inputStr='Password' btnStr='Next' nvgStr='' navigation={navigation}/>
+        </>
+        :
+        <>
+            <Animated.View >
+                <TextInput  onFocus={()=>setFocus(true)} onBlur={()=>setFocus(false)} placeholder={"Email or Phone number"} style={{fontFamily:'ZohoRegular',width:width*0.9,alignSelf:'center',borderBottomColor:focus ? '#159AFF': 'lightgray',borderBottomWidth:1}} />
+                <TouchableOpacity onPress={()=>setVisible(true)} style={{paddingHorizontal:height*0.1,backgroundColor:'#159AFF',width:width*0.9,alignSelf:'center',paddingVertical:height*0.02,marginTop:height*0.1}}>
+                    <Text style={{color:'white',alignSelf:'center',fontFamily:'ZohoRegular'}}>{"NEXT"}</Text>
+                </TouchableOpacity>
+            </Animated.View>
+        </>
+      }
 
         <TouchableOpacity  onPress={()=>navigation.navigate('ForgotPassword')} style={{marginTop:height*0.03}}>
            <Text style={{color:'#159AFF',alignSelf:'center',fontFamily:'ZohoBold',}}>Forgot Password?</Text>
