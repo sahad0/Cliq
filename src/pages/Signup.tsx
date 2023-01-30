@@ -7,7 +7,7 @@ import { SignupFooter } from '../components/Signup/SignupFooter';
 
 
 
-const Signup = ():JSX.Element => {
+const Signup = ({navigation}:any):JSX.Element => {
 
     const {width,height} = Dimensions.get('screen');
 
@@ -15,7 +15,7 @@ const Signup = ():JSX.Element => {
   return (
     <View style={{flex:1,backgroundColor:'white'}}>
         <TouchableOpacity onPress={()=>Keyboard.dismiss()} activeOpacity={1}>
-            <SignupHeader height={height} width={width} />
+            <SignupHeader height={height} width={width}  navigation={navigation}/>
             <SignUpForm height={height} width={width} />
             <SignupFooter height={height} />
         </TouchableOpacity>

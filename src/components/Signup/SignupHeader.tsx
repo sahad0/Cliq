@@ -2,9 +2,9 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
 import React, { FC } from 'react'
 
 
-type AppProps = { height: number,width:number };
+type AppProps = { height: number,width:number,navigation:any };
 
-export const SignupHeader = ({height,width}:AppProps):JSX.Element => {
+export const SignupHeader = ({height,width,navigation}:AppProps):JSX.Element => {
 
   return (
     <>
@@ -12,7 +12,7 @@ export const SignupHeader = ({height,width}:AppProps):JSX.Element => {
             <Image source={require('../../assets/images/zoho.png')}  style={{height:height*0.11,width:height*0.11,marginTop:0}} resizeMode={'contain'}  />
             <View style={{flexDirection:'row',margin:height*0.018,marginBottom:0,marginTop:0}}>
                 <Text style={{fontFamily:'ZohoRegular'}}>Have a Zoho Account ? </Text>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=>navigation.navigate('Login')}>
                 <Text style={{color:'red',fontFamily:'ZohoRegular'}}>SIGN IN</Text>
                 </TouchableOpacity>
             </View>

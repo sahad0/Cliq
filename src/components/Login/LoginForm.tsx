@@ -5,11 +5,12 @@ import React, { useState } from 'react'
 type Props = {
     height:number,
     width:number,
+    navigation:any,
 }
 
 type focusBool = true|false;
 
-export const LoginForm = ({height,width}:Props):JSX.Element=> {
+export const LoginForm = ({height,width,navigation}:Props):JSX.Element=> {
 
 
 
@@ -39,7 +40,7 @@ export const LoginForm = ({height,width}:Props):JSX.Element=> {
         </TouchableOpacity> 
         <View style={{margin:height*0.03,flexDirection:'row',justifyContent:'center'}}>
           <Text style={{fontFamily:'ZohoRegular'}}>Don't have Zoho account? </Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=>navigation.navigate('SignUp')}>
             <Text style={{color:'#159AFF',alignSelf:'center',fontFamily:'ZohoBold',}}>Sign up now!</Text>
           </TouchableOpacity>
         </View>

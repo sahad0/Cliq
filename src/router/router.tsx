@@ -15,9 +15,9 @@ export default function Router():JSX.Element {
     
     <NavigationContainer >
          <Stack.Navigator  screenOptions={{headerShown:false,}}  initialRouteName={'Login'} >
-            <Stack.Screen   name='Login' component={Login} />
+            <Stack.Screen  options={{animation:'fade_from_bottom'}} name='Login' component={Login} />
 
-            <Stack.Screen   name='SignUp' component={Signup} />
+            <Stack.Screen  options={{animation:'fade_from_bottom'}} name='SignUp' component={Signup} />
         </Stack.Navigator>
        
     </NavigationContainer>
