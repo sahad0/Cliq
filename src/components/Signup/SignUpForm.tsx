@@ -1,12 +1,12 @@
 import { View, Text, Image, TextInput, StyleSheet, Button, TouchableOpacity } from 'react-native'
 import React from 'react'
 
-type AppProps = { height: number,width:number };
+type AppProps = { height: number,width:number,navigation:any };
 
-export const SignUpForm = ({height,width}:AppProps):JSX.Element => {
+export const SignUpForm = ({height,width,navigation}:AppProps):JSX.Element => {
 
 
-    const style = StyleSheet.create({
+    const style = StyleSheet.create({ 
         inputField :{
             borderColor:'black',
             borderWidth:1,
@@ -36,7 +36,7 @@ export const SignUpForm = ({height,width}:AppProps):JSX.Element => {
             
         </View>
     </View>
-        <TouchableOpacity style={{paddingHorizontal:height*0.1,backgroundColor:'#f0483e',width:width*0.9,alignSelf:'center',paddingVertical:height*0.02,marginTop:height*0.06}}>
+        <TouchableOpacity onPress={()=>navigation.navigate('OtpVerifySignUp')} style={{paddingHorizontal:height*0.1,backgroundColor:'#f0483e',width:width*0.9,alignSelf:'center',paddingVertical:height*0.02,marginTop:height*0.06}}>
             <Text style={{color:'white',alignSelf:'center',fontFamily:'ZohoRegular',fontSize:height*0.0155}}>START YOUR FREE TRIAL NOW</Text>
         </TouchableOpacity>
 
