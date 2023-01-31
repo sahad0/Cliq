@@ -1,10 +1,15 @@
-import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
-import React from 'react'
+import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native'
+import React, { useReducer } from 'react'
+import { Formik, FormikProps, FormikValues } from 'formik';
+import { otpSchema } from '../Extra/YupSchema/Schema';
+import axios from 'axios';
+import requestStatus, { initial_state } from '../../assets/utils/LoaderHandling';
 
-type AppProps = { height: number,width:number };
+type AppProps = { height: number,width:number,userState:object};
 
 
-export  const OtpVerifyFormSignUp = ({height,width}:AppProps):JSX.Element =>{
+export  const OtpVerifyFormSignUp = ({height,width,userState}:AppProps):JSX.Element =>{
+  const [eventReducer,setEventReducer] = useReducer(requestStatus,initial_state);
 
 
 
@@ -16,7 +21,22 @@ export  const OtpVerifyFormSignUp = ({height,width}:AppProps):JSX.Element =>{
             alignSelf:'center',
             paddingLeft:width*0.04
         }
-    })
+    });
+
+    const SignUpfn = async (values:object):Promise<void> => {
+
+        try {
+            setEventReducer({type:'loading'});
+            const val = {...userState,...values};
+            const data = axios.post('',val);
+            setEventReducer({type:'success'});
+
+        } catch (error) {
+            setEventReducer({type:'error'});
+        }
+
+        
+    }
 
 
 
@@ -39,12 +59,33 @@ export  const OtpVerifyFormSignUp = ({height,width}:AppProps):JSX.Element =>{
 
         </View>
 
-        <TextInput style={[style.inputField,{marginTop:height*0.04,}]} />
+        <Formik validateOnBlur={false} validateOnChange={false} validationSchema={otpSchema} initialValues={{otp:''}} onSubmit={SignUpfn}>
+
+            
+            {({ handleChange, handleBlur, handleSubmit,values ,errors}:FormikProps<any>) => (
+                 <TextInput onChangeText={handleChange('otp')} value={values.otp} style={[style.inputField,{marginTop:height*0.04,}]} />
+            )}
+        </Formik>
+
+
         <Text style={{fontFamily:'ZohoBold',color:'black',fontSize:height*0.017,marginTop:height*0.03,textDecorationLine:'underline',marginLeft:width*0.05,}}>Resend OTP</Text>
 
 
         <TouchableOpacity style={{paddingHorizontal:height*0.1,backgroundColor:'#f0483e',width:width*0.9,alignSelf:'center',paddingVertical:height*0.02,marginTop:height*0.06}}>
-            <Text style={{color:'white',alignSelf:'center',fontFamily:'ZohoRegular',fontSize:height*0.017}}>VERIFY</Text>
+            
+        {
+                      eventReducer?.loading ? 
+                      <>
+                        <ActivityIndicator size={'small'} color={'#FFFFFF'} />
+                      </>
+                      :
+                      <>
+                      <Text style={{color:'white',alignSelf:'center',fontFamily:'ZohoRegular',fontSize:height*0.017}}>VERIFY</Text>
+                      </>
+                      
+                    }
+            
+            
         </TouchableOpacity>
     </View>
   )

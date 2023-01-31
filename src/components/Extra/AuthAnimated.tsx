@@ -1,7 +1,7 @@
 import { View, Text, TextInput, TouchableOpacity, Button, ActivityIndicator } from 'react-native'
 import React, { useEffect, useReducer, useState } from 'react'
 import Animated, { FadeInDown, } from 'react-native-reanimated';
-import { Formik, FormikValues } from 'formik';
+import { Formik, FormikProps, FormikValues } from 'formik';
 import axios from 'axios';
 import { useAppDispatch } from '../../Hooks/hooks';
 import { loginController } from '../../store/store';
@@ -92,7 +92,7 @@ export default function AuthAnimated({height,width,inputStr,btnStr,navigation,us
 
         <Formik initialValues={initialValues} onSubmit={LoginFn} validateOnBlur={false} validateOnChange={false}>
             
-            {({ handleChange, handleBlur, handleSubmit, values }) => (
+            {({ handleChange, handleBlur, handleSubmit, values }:FormikProps<FormikValues>) => (
               <>
                 <TextInput onChangeText={handleChange('password')} value={values.email} onBlur={()=>{handleBlur('password'),setFocus(false)}} secureTextEntry={true} onFocus={()=>setFocus(true)}  placeholder={inputStr} style={{fontFamily:'ZohoRegular',width:width*0.9,alignSelf:'center',borderBottomColor:focus ? '#159AFF': 'lightgray',borderBottomWidth:1}} />
                 {inValidCred?
