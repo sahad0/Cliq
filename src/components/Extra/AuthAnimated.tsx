@@ -1,8 +1,11 @@
-import { View, Text, TextInput, TouchableOpacity, Button } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import { View, Text, TextInput, TouchableOpacity, Button, ActivityIndicator } from 'react-native'
+import React, { useEffect, useReducer, useState } from 'react'
 import Animated, { FadeInDown, } from 'react-native-reanimated';
 import { Formik, FormikValues } from 'formik';
 import axios from 'axios';
+import { useAppDispatch } from '../../Hooks/hooks';
+import { loginController } from '../../store/store';
+import requestStatus, { initial_state } from '../../assets/utils/LoaderHandling';
 
 
 type Props = {
@@ -25,12 +28,14 @@ type userDetail  ={
 export default function AuthAnimated({height,width,inputStr,btnStr,navigation,user,setUser}:Props):JSX.Element {
 
 
-
-
     const [focus,setFocus] = useState<FocusBool>(false);
     const [inValidCred,setInValidCred] = useState<FocusBool>(false);
-
     const initialValues: FormikValues = { password: '' };
+    const [eventReducer,setEventReducer] = useReducer(requestStatus,initial_state);
+
+
+    
+    const dispatch = useAppDispatch();
 
     useEffect(()=>{
       const {email,password}:userDetail = user;
@@ -38,18 +43,30 @@ export default function AuthAnimated({height,width,inputStr,btnStr,navigation,us
       if(email!==''&& password!==''){
         callLogin();
       }
-      else{
-        console.log("not filled");
-      }
+      
     },[user])
 
     const callLogin = async():Promise<void> =>{
       try {
+        setEventReducer({type:'loading'});
         const {data} = await axios.post('http://3.91.133.172/api/auth/login',user);
-        console.log(data);
+        setInValidCred(false);
+        
+        if(data){
+          delete data.message;
+          console.log(data);
+          dispatch(loginController(data));
+          setEventReducer({type:'success'});
+
+        }
+        else{
+        setEventReducer({type:'error'});
+
+        }
       } catch (err:any) {
         if (err.response) {
-          // 👇️ log status code here
+          setEventReducer({type:'error'});
+
           err.response.status===400 ? setInValidCred(true):null;
         }
       }
@@ -63,7 +80,6 @@ export default function AuthAnimated({height,width,inputStr,btnStr,navigation,us
         
        
       } catch (error) {
-          console.log(error);
       }
     }
     
@@ -88,7 +104,16 @@ export default function AuthAnimated({height,width,inputStr,btnStr,navigation,us
                     </>
                 }
                 <TouchableOpacity onPress={handleSubmit} style={{paddingHorizontal:height*0.1,backgroundColor:'#159AFF',width:width*0.9,alignSelf:'center',paddingVertical:height*0.02,marginTop:height*0.1}}>
-                    <Text style={{color:'white',alignSelf:'center',fontFamily:'ZohoRegular'}}>{btnStr}</Text>
+                      {
+                      eventReducer?.loading ? 
+                      <>
+                        <ActivityIndicator size={'small'} color={'#FFFFFF'} />
+                      </>
+                      :
+                      <>
+                      <Text style={{color:'white',alignSelf:'center',fontFamily:'ZohoRegular'}}>{btnStr}</Text>
+                      </>
+                     }
                 </TouchableOpacity>
               </>
           )}

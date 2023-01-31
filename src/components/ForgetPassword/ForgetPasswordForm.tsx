@@ -19,7 +19,7 @@ export default function ForgetPasswordForm({height,width,navigation}:Props):JSX.
 
   return (
     <View style={{marginTop:height*0.04,height:'100%'}}>
-        <AuthInput height={height} width={width} inputStr='Email Address or Phone Number' btnStr='SENT OTP' nvgStr='OtpVerifyLogin' navigation={navigation} />
+        <AuthInput height={height} width={width} inputStr='Email Address' btnStr='SENT OTP' nvgStr='OtpVerifyLogin' navigation={navigation} />
     </View>
   )
 }

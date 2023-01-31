@@ -1,11 +1,14 @@
-import { View, Text, TextInput, Touchable, TouchableOpacity, Image, Button } from 'react-native'
+import { View, Text, TextInput, Touchable, TouchableOpacity, Image, Button, ActivityIndicator } from 'react-native'
 import React, { useEffect, useReducer, useState } from 'react'
 import AuthInput from '../Extra/AuthInput'
 import AuthAnimated from '../Extra/AuthAnimated'
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
 import Icon from 'react-native-vector-icons/AntDesign';
 import axios from 'axios';
-import { Formik,  FormikValues } from 'formik'
+import { Formik,  FormikValues , FormikErrors, FormikProps} from 'formik'
+import { emailSchema } from '../Extra/YupSchema/Schema'
+import requestStatus, { initial_state } from '../../assets/utils/LoaderHandling'
+
 
 
 type Props = {
@@ -26,32 +29,39 @@ type checkMail = boolean;
 
 export const LoginForm = ({height,width,navigation,setUser,user}:Props):JSX.Element=> {
 
+  const initialValues: FormikValues = { email: '' };
   const [visible,setVisible] = useState<Visible>(false);
   const [focus,setFocus] = useState<focusBool>(false);
   const [emailExist,setEmailExist] = useState<focusBool>(true);
 
-  const initialValues: FormikValues = { email: '' };
+  const [eventReducer,setEventReducer] = useReducer(requestStatus,initial_state);
+
 
   const checkEmailExist = async(values: FormikValues): Promise<void>=>{
     try {
+      setEventReducer({type:'loading'});
       const check = await axios.post('http://3.91.133.172/api/auth/check-email',values);
       if(check){
         const {exists} = check.data;
         console.log(exists)
         if(exists){
           const {email} = values;
+          setEventReducer({type:'success'});
           setUser({...user,email});
           setEmailExist(true);
           setVisible(true);
+
         }
         else{
-          console.log("Not exist");
           setEmailExist(false);
+          setEventReducer({type:'error'});
+
           
         }
       }
       
     } catch (error) {
+      setEventReducer({type:'error'});
       console.log(error);
     }
   }
@@ -77,11 +87,16 @@ export const LoginForm = ({height,width,navigation,setUser,user}:Props):JSX.Elem
         <>
           <Animated.View >
 
-            <Formik initialValues={initialValues} onSubmit={checkEmailExist}>
+            <Formik validateOnBlur={false} validateOnChange={false} validationSchema={emailSchema} initialValues={initialValues} onSubmit={checkEmailExist}>
             
-            {({ handleChange, handleBlur, handleSubmit, values }) => (
+            {({ handleChange, handleBlur, handleSubmit,values ,errors }:FormikProps<FormikValues>) => (
+              
                 <>
                   <TextInput  onChangeText={handleChange('email')} value={values.email} onFocus={()=>setFocus(true)}  onBlur={()=>{handleBlur('email'),setFocus(false)}} placeholder={"Email *"} style={{fontFamily:'ZohoRegular',width:width*0.9,alignSelf:'center',borderBottomColor:focus ? '#159AFF': 'lightgray',borderBottomWidth:1}} />
+                  {(errors.email) &&  <><Text style={{color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>
+                    {errors.email.toString()}
+                  </Text></>}
+                    
                     {emailExist?
                     <></>
                     :
@@ -91,7 +106,17 @@ export const LoginForm = ({height,width,navigation,setUser,user}:Props):JSX.Elem
                     }
 
                   <TouchableOpacity onPress={handleSubmit} style={{paddingHorizontal:height*0.1,backgroundColor:'#159AFF',width:width*0.9,alignSelf:'center',paddingVertical:height*0.02,marginTop:height*0.1}}>
+                     
+                     {
+                      eventReducer?.loading ? 
+                      <>
+                        <ActivityIndicator size={'small'} color={'#FFFFFF'} />
+                      </>
+                      :
+                      <>
                       <Text style={{color:'white',alignSelf:'center',fontFamily:'ZohoRegular'}}>{"NEXT"}</Text>
+                      </>
+                     }
                   </TouchableOpacity>
                 </>
 
