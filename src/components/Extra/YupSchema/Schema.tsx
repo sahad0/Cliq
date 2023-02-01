@@ -40,6 +40,6 @@ export const signupSchema = yup.object().shape({
 export const otpSchema = yup.object().shape({
   otp: yup
     .string()
-    .min(5,({min})=> `PHone must be at least ${min} digits`)
-    .required('A phone number is required'),
+    .min(6,({min})=> `OTP must be at least ${min} digits`)
+    .required('OTP is required'),
 })

@@ -1,5 +1,5 @@
-import { View, Text, Image, TextInput, StyleSheet, Button, TouchableOpacity, ActivityIndicator } from 'react-native'
-import React, { useReducer } from 'react'
+import { View, Text, Image, TextInput, StyleSheet, Button, TouchableOpacity, ActivityIndicator, KeyboardAvoidingView } from 'react-native'
+import React, { useReducer, useState } from 'react'
 import { Formik, FormikProps, FormikValues } from 'formik';
 import { signupSchema } from '../Extra/YupSchema/Schema';
 import axios from 'axios';
@@ -11,6 +11,7 @@ type PropsForm = {
     password:string,
     phone:string,
 }
+type Error = false|true;
 
 export const SignUpForm = ({height,width,navigation}:AppProps):JSX.Element => {
 
@@ -20,6 +21,7 @@ export const SignUpForm = ({height,width,navigation}:AppProps):JSX.Element => {
         phone:'',
     }
     const [eventReducer,setEventReducer] = useReducer(requestStatus,initial_state);
+    const [emailExist,setEmailExist] = useState<Error>(false);
 
 
 
@@ -36,13 +38,28 @@ export const SignUpForm = ({height,width,navigation}:AppProps):JSX.Element => {
     const sentSignUpOtp =async (values:PropsForm):Promise<void> => {
         try {
             setEventReducer({type: 'loading'});
-            const {email} = values;
-            const x = await axios.post('',{email});
-            if(x){
-                setEventReducer({type: 'success'});
+            const check = await axios.post('http://3.87.5.179/api/auth/check-email',values);
+            if(check){
+              const {exists} = check.data;
+              if(exists){
+               setEmailExist(true);
+               setEventReducer({type:'error'});
 
-                navigation.navigate('OtpVerifySignUp',{user:values});
+              }
+              else{
+                setEmailExist(false);
+                const {email} = values;
+                const x = await axios.post('http://3.87.5.179/api/auth/email-otp',{email});
+                if(x){
+                  if(x.status===200){
+                    setEventReducer({type: 'success'});
+  
+                    navigation.navigate('OtpVerifySignUp',{user:values});
+                  }
+                }
+              }
             }
+            
         } catch (error) {
             setEventReducer({type:'error'});
         }
@@ -71,6 +88,7 @@ export const SignUpForm = ({height,width,navigation}:AppProps):JSX.Element => {
             {(errors.email) &&  <><Text style={{color:'red',fontFamily:'ZohoRegular',margin:height*0.01,marginLeft:height*0.025,marginBottom:0}}>
                     {errors.email.toString()}
                   </Text></>}
+            {emailExist && (<><Text style={{color:'red',fontFamily:'ZohoRegular',margin:height*0.01,marginLeft:height*0.025,marginBottom:0}}>{'Email aldready Exist!'}</Text></>)}
             <TextInput onChangeText={handleChange('password')} value={values.password} placeholder='Password*' style={[style.inputField,{marginTop:height*0.02}]} />
             {(errors.password) &&  <><Text style={{color:'red',fontFamily:'ZohoRegular',margin:height*0.01,marginLeft:height*0.025,marginBottom:0}}>
                     {errors.password.toString()}

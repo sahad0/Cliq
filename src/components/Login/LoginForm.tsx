@@ -10,12 +10,17 @@ import requestStatus, { initial_state } from '../../assets/utils/LoaderHandling'
 
 
 
+
+type UserType = {
+  email:string,
+  password?:string,
+}
 type Props = {
-    height:number,
-    width:number,
-    navigation:any,
-    setUser:any,
-    user:object,
+  height:number,
+  width:number,
+  navigation:any,
+  setUser:any,
+  user:UserType,
 }
 type Visible = true|false;
 
@@ -38,7 +43,7 @@ export const LoginForm = ({height,width,navigation,setUser,user}:Props):JSX.Elem
   const checkEmailExist = async(values: FormikValues): Promise<void>=>{
     try {
       setEventReducer({type:'loading'});
-      const check = await axios.post('http://3.91.133.172/api/auth/check-email',values);
+      const check = await axios.post('http://3.87.5.179/api/auth/check-email',values);
       if(check){
         const {exists} = check.data;
         if(exists){
@@ -72,7 +77,7 @@ export const LoginForm = ({height,width,navigation,setUser,user}:Props):JSX.Elem
         visible ? 
         <>
           <View style={{flexDirection:'row',margin:height*0.0258}}>
-            <Text style={{fontFamily:'ZohoRegular',color:'gray'}}>sahadwg@gmail.com</Text>
+            <Text style={{fontFamily:'ZohoRegular',color:'gray'}}>{user.email}</Text>
             <TouchableOpacity style={{marginLeft:height*0.02}} onPress={()=>setVisible(false)}>
               <Text style={{fontFamily:'ZohoRegular',color:'#159AFF',}}>Change</Text>
             </TouchableOpacity>

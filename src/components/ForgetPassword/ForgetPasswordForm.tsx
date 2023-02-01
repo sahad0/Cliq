@@ -29,7 +29,7 @@ export default function ForgetPasswordForm({height,width,navigation}:Props):JSX.
 
     try {
       setEventReducer({type:'loading'});
-      const {data} = await axios.post('',email);
+      const {data} = await axios.post('http://3.87.5.179/api/',email);
       if(data){
         const {exists} = data;
         if(exists){

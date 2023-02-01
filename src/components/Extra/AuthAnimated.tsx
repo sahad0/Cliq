@@ -49,7 +49,7 @@ export default function AuthAnimated({height,width,inputStr,btnStr,navigation,us
     const callLogin = async():Promise<void> =>{
       try {
         setEventReducer({type:'loading'});
-        const {data} = await axios.post('http://3.91.133.172/api/auth/login',user);
+        const {data} = await axios.post('http://3.87.5.179/api/auth/login',user);
         setInValidCred(false);
         
         if(data){
@@ -64,7 +64,7 @@ export default function AuthAnimated({height,width,inputStr,btnStr,navigation,us
 
         }
       } catch (err:any) {
-        if (err.response) {
+        if (err.response.status===400) {
           setEventReducer({type:'error'});
 
           err.response.status===400 ? setInValidCred(true):null;
