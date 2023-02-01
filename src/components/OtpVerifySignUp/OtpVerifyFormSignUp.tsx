@@ -1,9 +1,9 @@
 import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native'
 import React, { useReducer, useState } from 'react'
 import { Formik, FormikProps, FormikValues } from 'formik';
-import { otpSchema } from '../Extra/YupSchema/Schema';
+import { otpSchema } from '../../Extra/YupSchema/Schema';
 import axios from 'axios';
-import requestStatus, { initial_state } from '../../assets/utils/LoaderHandling';
+import requestStatus, { initial_state } from '../../utils/LoaderHandling';
 import { KeyboardAvoidingView } from 'react-native';
 import { useAppDispatch } from '../../Hooks/hooks';
 import { loginController } from '../../store/store';

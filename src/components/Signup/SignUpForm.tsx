@@ -1,9 +1,9 @@
 import { View, Text, Image, TextInput, StyleSheet, Button, TouchableOpacity, ActivityIndicator, KeyboardAvoidingView } from 'react-native'
 import React, { useReducer, useState } from 'react'
 import { Formik, FormikProps, FormikValues } from 'formik';
-import { signupSchema } from '../Extra/YupSchema/Schema';
+import { signupSchema } from '../../Extra/YupSchema/Schema';
 import axios from 'axios';
-import requestStatus, { initial_state } from '../../assets/utils/LoaderHandling';
+import requestStatus, { initial_state } from '../../utils/LoaderHandling';
 
 type AppProps = { height: number,width:number,navigation:any };
 type PropsForm = {

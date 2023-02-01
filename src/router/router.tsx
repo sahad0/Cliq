@@ -4,10 +4,10 @@ import Signup from '../pages/auth/Signup';
 import  {Login}  from '../pages/auth/Login';
 import ForgotPassword from '../pages/auth/ForgotPassword';
 import OtpVerifySignUp from '../pages/auth/OtpVerifySignUp';
-import OtpVerifyLogin from '../pages/auth/OtpVerifyLogin';
 import CreateOrganization from '../pages/OrganisationControl/CreateOrganization';
 import { useAppSelector } from '../Hooks/hooks';
-import { useEffect } from 'react';
+import OtpVerifyForgotPass from '../pages/auth/OtpVerifyForgotPass';
+import ResetPassword from '../pages/auth/ResetPassword';
 
 
 type userAuth = {
@@ -40,7 +40,11 @@ export default function Router():JSX.Element {
     
                 <Stack.Screen  options={{animation:'slide_from_right'}} name='ForgotPassword' component={ForgotPassword} />
                 
-                <Stack.Screen  options={{animation:'slide_from_right'}} name='OtpVerifyLogin' component={OtpVerifyLogin} />
+                <Stack.Screen  options={{animation:'slide_from_right'}} name='OtpVerifyForgotPass' component={OtpVerifyForgotPass} />
+
+                <Stack.Screen  options={{animation:'slide_from_right'}} name='ResetPassword' component={ResetPassword} />
+
+                
               </>
             )
           }

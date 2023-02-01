@@ -43,3 +43,10 @@ export const otpSchema = yup.object().shape({
     .min(6,({min})=> `OTP must be at least ${min} digits`)
     .required('OTP is required'),
 })
+
+
+export const resetPasswordSchema =  yup.object().shape({
+  password: yup.string().required('Password is required'),
+  passwordConfirmation: yup.string()
+     .oneOf([yup.ref('password'), null], 'Passwords must match').min(6,({min})=> `Password must be at least ${min} characters`)
+});

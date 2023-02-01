@@ -3,9 +3,9 @@ import React, { useEffect, useReducer, useState } from 'react'
 import Animated, { FadeInDown, } from 'react-native-reanimated';
 import { Formik, FormikProps, FormikValues } from 'formik';
 import axios from 'axios';
-import { useAppDispatch } from '../../Hooks/hooks';
-import { loginController } from '../../store/store';
-import requestStatus, { initial_state } from '../../assets/utils/LoaderHandling';
+import { useAppDispatch } from '../Hooks/hooks';
+import { loginController } from '../store/store';
+import requestStatus, { initial_state } from '../utils/LoaderHandling';
 
 
 type Props = {
