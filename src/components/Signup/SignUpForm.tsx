@@ -38,7 +38,7 @@ export const SignUpForm = ({height,width,navigation}:AppProps):JSX.Element => {
     const sentSignUpOtp =async (values:PropsForm):Promise<void> => {
         try {
             setEventReducer({type: 'loading'});
-            const check = await axios.post('http://3.87.5.179/api/auth/check-email',values);
+            const check = await axios.post('/check-email',values);
             if(check){
               const {exists} = check.data;
               if(exists){
@@ -49,7 +49,7 @@ export const SignUpForm = ({height,width,navigation}:AppProps):JSX.Element => {
               else{
                 setEmailExist(false);
                 const {email} = values;
-                const x = await axios.post('http://3.87.5.179/api/auth/email-otp',{email});
+                const x = await axios.post('/email-otp',{email});
                 if(x){
                   if(x.status===200){
                     setEventReducer({type: 'success'});
@@ -84,22 +84,22 @@ export const SignUpForm = ({height,width,navigation}:AppProps):JSX.Element => {
         
         <View style={{marginTop:height*0.02}}>   
 
-            <TextInput onChangeText={handleChange('email')} value={values.email} placeholder='Email*' style={[style.inputField,{marginTop:height*0.04,}]} />
-            {(errors.email) &&  <><Text style={{color:'red',fontFamily:'ZohoRegular',margin:height*0.01,marginLeft:height*0.025,marginBottom:0}}>
+            <TextInput placeholderTextColor={'gray'} onChangeText={handleChange('email')} value={values.email} placeholder='Email*' style={[style.inputField,{color:'gray',marginTop:height*0.04,}]} />
+            {(errors.email) &&  <><Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.01,marginLeft:height*0.025,marginBottom:0}}>
                     {errors.email.toString()}
                   </Text></>}
-            {emailExist && (<><Text style={{color:'red',fontFamily:'ZohoRegular',margin:height*0.01,marginLeft:height*0.025,marginBottom:0}}>{'Email aldready Exist!'}</Text></>)}
-            <TextInput onChangeText={handleChange('password')} value={values.password} placeholder='Password*' style={[style.inputField,{marginTop:height*0.02}]} />
-            {(errors.password) &&  <><Text style={{color:'red',fontFamily:'ZohoRegular',margin:height*0.01,marginLeft:height*0.025,marginBottom:0}}>
+            {emailExist && (<><Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.01,marginLeft:height*0.025,marginBottom:0}}>{'Email aldready Exist!'}</Text></>)}
+            <TextInput secureTextEntry={true} placeholderTextColor={'gray'} onChangeText={handleChange('password')} value={values.password} placeholder='Password*' style={[style.inputField,{color:'gray',marginTop:height*0.02}]} />
+            {(errors.password) &&  <><Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.01,marginLeft:height*0.025,marginBottom:0}}>
                     {errors.password.toString()}
                   </Text></>}
             <View style={{marginTop:height*0.02,flexDirection:'row',alignSelf:'center'}}>
 
-                <TextInput editable={false} placeholder='+91' style={[{ borderColor:'black',borderWidth:1,width:width*0.2,alignSelf:'center',paddingLeft:width*0.04,borderRightWidth:0}]} />
-                <TextInput keyboardType='number-pad' onChangeText={handleChange('phone')} value={values.phone} placeholder='Phone Number*' style={[{ borderColor:'black',borderWidth:1,width:width*0.7,alignSelf:'center',paddingLeft:width*0.04}]} />
+                <TextInput placeholderTextColor={'gray'} editable={false} placeholder='+91' style={[{ color:'gray',borderColor:'black',borderWidth:1,width:width*0.2,alignSelf:'center',paddingLeft:width*0.04,borderRightWidth:0}]} />
+                <TextInput placeholderTextColor={'gray'} keyboardType='number-pad' onChangeText={handleChange('phone')} value={values.phone} placeholder='Phone Number*' style={[{ color:'gray',borderColor:'black',borderWidth:1,width:width*0.7,alignSelf:'center',paddingLeft:width*0.04}]} />
                
             </View>
-            {(errors.phone) &&  <><Text style={{color:'red',fontFamily:'ZohoRegular',margin:height*0.01,marginLeft:height*0.025,marginBottom:0}}>
+            {(errors.phone) &&  <><Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.01,marginLeft:height*0.025,marginBottom:0}}>
                     {errors.phone.toString()}
                   </Text></>}
         </View>
@@ -112,7 +112,7 @@ export const SignUpForm = ({height,width,navigation}:AppProps):JSX.Element => {
                       </>
                       :
                       <>
-                        <Text style={{color:'white',alignSelf:'center',fontFamily:'ZohoRegular',fontSize:height*0.0155}}>START YOUR FREE TRIAL NOW</Text>
+                        <Text style={{textAlign:'center',color:'white',alignSelf:'center',fontFamily:'ZohoRegular',fontSize:height*0.0155}}>START YOUR FREE TRIAL</Text>
                       </>
                     }
            

@@ -33,11 +33,11 @@ export default function ForgetPasswordForm({height,width,navigation}:Props):JSX.
       setHandleError(false);
 
       setEventReducer({type:'loading'});
-      const {data} = await axios.post('http://3.87.5.179/api/auth/check-email',{email:values.email});
+      const {data} = await axios.post('/check-email',{email:values.email});
       if(data){
         const {exists} = data;
         if(exists){
-          const sentOtp = await axios.post('http://3.87.5.179/api/auth/email-otp',{email:values.email});
+          const sentOtp = await axios.post('/email-otp',{email:values.email});
           setEventReducer({type:'success'});
           navigation.navigate('OtpVerifyForgotPass',{email:values.email});
 
@@ -64,13 +64,13 @@ export default function ForgetPasswordForm({height,width,navigation}:Props):JSX.
             {({ handleChange, handleBlur, handleSubmit,values ,errors }:FormikProps<Values>):JSX.Element => (
               
             <>
-                 <TextInput onChangeText={handleChange('email')}  onFocus={()=>setFocus(true)} onBlur={()=>setFocus(false)} placeholder={'Email'} style={{fontFamily:'ZohoRegular',width:width*0.9,alignSelf:'center',borderBottomColor:focus ? '#159AFF': 'lightgray',borderBottomWidth:1}} />
-                 {(errors.email) &&  <><Text style={{color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>
+                 <TextInput placeholderTextColor={'gray'} onChangeText={handleChange('email')}  onFocus={()=>setFocus(true)} onBlur={()=>setFocus(false)} placeholder={'Email'} style={{color:'gray',fontFamily:'ZohoRegular',width:width*0.9,alignSelf:'center',borderBottomColor:focus ? '#159AFF': 'lightgray',borderBottomWidth:1}} />
+                 {(errors.email) &&  <><Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>
                             {errors.email.toString()}
                           </Text></>}
 
                   {handleError && (
-                    <><Text style={{color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>
+                    <><Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>
                     {'No account Found!'}
                   </Text></>
                   )}

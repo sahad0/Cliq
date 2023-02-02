@@ -31,8 +31,8 @@ export default function AuthInput({val,height,width,inputStr,btnStr,nvgStr,navig
     {({ handleChange, handleBlur, handleSubmit,values ,errors }:FormikProps<FormikValues>) => (
       
     <>
-         <TextInput  onFocus={()=>setFocus(true)} onBlur={()=>setFocus(false)} placeholder={inputStr} style={{fontFamily:'ZohoRegular',width:width*0.9,alignSelf:'center',borderBottomColor:focus ? '#159AFF': 'lightgray',borderBottomWidth:1}} />
-         {(errors.email) &&  <><Text style={{color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>
+         <TextInput placeholderTextColor={'gray'}  onFocus={()=>setFocus(true)} onBlur={()=>setFocus(false)} placeholder={inputStr} style={{color:'gray',fontFamily:'ZohoRegular',width:width*0.9,alignSelf:'center',borderBottomColor:focus ? '#159AFF': 'lightgray',borderBottomWidth:1}} />
+         {(errors.email) &&  <><Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>
                     {errors.email.toString()}
                   </Text></>}
           <TouchableOpacity onPress={()=>navigation.navigate(nvgStr)} style={{paddingHorizontal:height*0.1,backgroundColor:'#159AFF',width:width*0.9,alignSelf:'center',paddingVertical:height*0.02,marginTop:height*0.1}}>

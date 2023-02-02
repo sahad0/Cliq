@@ -36,7 +36,7 @@ export default function OtpVerifyFormForgotPass({width,height,navigation,email}:
         try {
             setError(false);
             setEventReducer({type:'loading'});
-            const {data} = await axios.post('http://3.87.5.179/api/auth/check-otp',{email:email,otp:values.otp});
+            const {data} = await axios.post('/check-otp',{email:email,otp:values.otp});
             if(data){
                 const {isValid} = data;
                 const user = {email:email,otp:values.otp}
@@ -66,13 +66,13 @@ export default function OtpVerifyFormForgotPass({width,height,navigation,email}:
             {({ handleChange, handleBlur, handleSubmit,values ,errors }:FormikProps<Values>) => (
               
             <>
-                 <TextInput onChangeText={handleChange('otp')} maxLength={6} keyboardType='number-pad' onFocus={()=>setFocus(true)} onBlur={()=>setFocus(false)} placeholder={'OTP *'} style={{fontFamily:'ZohoRegular',width:width*0.9,alignSelf:'center',borderBottomColor:focus ? '#159AFF': 'lightgray',borderBottomWidth:1}} />
-                 {(errors.otp) &&  <><Text style={{color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>
+                 <TextInput placeholderTextColor={'gray'} onChangeText={handleChange('otp')} maxLength={6} keyboardType='number-pad' onFocus={()=>setFocus(true)} onBlur={()=>setFocus(false)} placeholder={'OTP *'} style={{color:'gray',fontFamily:'ZohoRegular',width:width*0.9,alignSelf:'center',borderBottomColor:focus ? '#159AFF': 'lightgray',borderBottomWidth:1}} />
+                 {(errors.otp) &&  <><Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>
                             {errors.otp.toString()}
                           </Text></>}
                 {error &&(
                     <>
-                    <Text style={{color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>
+                    <Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>
                             {'Invalid OTP,Please try again!'}
                           </Text>
                     </>

@@ -49,7 +49,7 @@ export default function AuthAnimated({height,width,inputStr,btnStr,navigation,us
     const callLogin = async():Promise<void> =>{
       try {
         setEventReducer({type:'loading'});
-        const {data} = await axios.post('http://3.87.5.179/api/auth/login',user);
+        const {data} = await axios.post('/login',user);
         setInValidCred(false);
         
         if(data){
@@ -94,7 +94,7 @@ export default function AuthAnimated({height,width,inputStr,btnStr,navigation,us
             
             {({ handleChange, handleBlur, handleSubmit, values }:FormikProps<FormikValues>) => (
               <>
-                <TextInput onChangeText={handleChange('password')} value={values.email} onBlur={()=>{handleBlur('password'),setFocus(false)}} secureTextEntry={true} onFocus={()=>setFocus(true)}  placeholder={inputStr} style={{fontFamily:'ZohoRegular',width:width*0.9,alignSelf:'center',borderBottomColor:focus ? '#159AFF': 'lightgray',borderBottomWidth:1}} />
+                <TextInput placeholderTextColor={'gray'} onChangeText={handleChange('password')} value={values.email} onBlur={()=>{handleBlur('password'),setFocus(false)}} secureTextEntry={true} onFocus={()=>setFocus(true)}  placeholder={inputStr} style={{color:'gray',fontFamily:'ZohoRegular',width:width*0.9,alignSelf:'center',borderBottomColor:focus ? '#159AFF': 'lightgray',borderBottomWidth:1}} />
                 {inValidCred?
                     <>
                       <Text style={{color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>Incorrect password. Please try again.</Text>

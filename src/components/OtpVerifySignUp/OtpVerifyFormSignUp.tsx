@@ -47,7 +47,7 @@ export  const OtpVerifyFormSignUp = ({height,width,user}:AppProps):JSX.Element =
             setEventReducer({type:'loading'});
             const val = {...user,...values};
             
-            const data=  await axios.post('http://3.87.5.179/api/auth/register',val);
+            const data=  await axios.post('/register',val);
             if(data){
               setError({set:false,message:''})
               dispatch(loginController({token:data.data.token}));
@@ -95,15 +95,15 @@ export  const OtpVerifyFormSignUp = ({height,width,user}:AppProps):JSX.Element =
         <Formik validateOnBlur={false} validateOnChange={false} validationSchema={otpSchema} initialValues={{otp:''}} onSubmit={SignUpfn}>
             
             {({ handleChange, handleBlur, handleSubmit,values ,errors}:FormikProps<Values>):JSX.Element => (<>
-              <TextInput maxLength={6} onChangeText={handleChange('otp')} value={values.otp} style={[style.inputField,{marginTop:height*0.04,}]} />
+              <TextInput placeholder='OTP *' placeholderTextColor={'gray'} maxLength={6} onChangeText={handleChange('otp')} value={values.otp} style={[style.inputField,{marginTop:height*0.04,color:'gray'}]} />
 
             {errors.otp && (
-            <Text style={{color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>
+            <Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>
                 {errors.otp.toString()}
             </Text>)}
             {error.set?
             <>
-              <Text style={{color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>
+              <Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>
                 {error.message}
             </Text>
             </>:null}

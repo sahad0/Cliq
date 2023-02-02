@@ -34,7 +34,7 @@ export default function ResetPasswordForm({width,height,navigation,user}:AppProp
     const handlePasswordChange = async(values:FormikValues):Promise<void>=>{
         try {
             setEventReducer({type:'loading'});
-            const changePass = await axios.post('http://3.87.5.179/api/auth/reset-password',{...user,password:values.passwordConfirmation});
+            const changePass = await axios.post('/reset-password',{...user,password:values.passwordConfirmation});
             if(changePass.data.message){
                 setEventReducer({type:'success'});
                 setSuccess(true);
@@ -43,9 +43,13 @@ export default function ResetPasswordForm({width,height,navigation,user}:AppProp
                 },4000);
                 
             }
-        } catch (error) {
-            setEventReducer({type:'error'});
+        } 
+        catch(err:any){
+          console.log(err.request.responseText);
+          setEventReducer({type:'error'});
+
         }
+        
     }
 
   return (
@@ -55,12 +59,12 @@ export default function ResetPasswordForm({width,height,navigation,user}:AppProp
     {({ handleChange, handleBlur, handleSubmit,values ,errors }:FormikProps<Values>) => (
       
         <>
-          <TextInput onChangeText={handleChange('password')} value={values.password} onFocus={()=>setFocus({...focus,focus1:true})}  onBlur={()=>{handleBlur('email'),setFocus({...focus,focus1:false})}} placeholder={"Password *"} style={{fontFamily:'ZohoRegular',width:width*0.9,alignSelf:'center',borderBottomColor:focus.focus1 ? '#159AFF': 'lightgray',borderBottomWidth:1}} />
-          <TextInput secureTextEntry={true}  onChangeText={handleChange('passwordConfirmation')} value={values.passwordConfirmation} onFocus={()=>setFocus({...focus,focus2:true})}  onBlur={()=>{handleBlur('email'),setFocus({...focus,focus2:false})}} placeholder={"Confirm Password*"} style={{fontFamily:'ZohoRegular',width:width*0.9,alignSelf:'center',borderBottomColor:focus.focus2 ? '#159AFF': 'lightgray',borderBottomWidth:1,marginTop:height*0.03}} />
-          {(errors.passwordConfirmation) &&  <><Text style={{color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>
+          <TextInput placeholderTextColor={'gray'} onChangeText={handleChange('password')} value={values.password} onFocus={()=>setFocus({...focus,focus1:true})}  onBlur={()=>{handleBlur('email'),setFocus({...focus,focus1:false})}} placeholder={"Password *"} style={{color:'gray',fontFamily:'ZohoRegular',width:width*0.9,alignSelf:'center',borderBottomColor:focus.focus1 ? '#159AFF': 'lightgray',borderBottomWidth:1}} />
+          <TextInput placeholderTextColor={'gray'} secureTextEntry={true}  onChangeText={handleChange('passwordConfirmation')} value={values.passwordConfirmation} onFocus={()=>setFocus({...focus,focus2:true})}  onBlur={()=>{handleBlur('email'),setFocus({...focus,focus2:false})}} placeholder={"Confirm Password*"} style={{color:'gray',fontFamily:'ZohoRegular',width:width*0.9,alignSelf:'center',borderBottomColor:focus.focus2 ? '#159AFF': 'lightgray',borderBottomWidth:1,marginTop:height*0.03}} />
+          {(errors.passwordConfirmation) &&  <><Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>
                     {errors.passwordConfirmation.toString()}
                   </Text></>}
-            {success && <><Text style={{color:'green',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>
+            {success && <><Text style={{fontSize:height*0.015,color:'green',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>
                     {'Password Reset Successfull'}
                   </Text></>}
 
