@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView } from 'react-native'
+import { View, Text, SafeAreaView, StatusBar } from 'react-native'
 import React from 'react'
 import Router from './src/router/router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -51,6 +51,7 @@ function App(): JSX.Element {
     <Provider store={store}>
     <PersistGate persistor={persistor}>
       <SafeAreaView style={{flex:1,backgroundColor:'white'}}>
+        <StatusBar hidden />
         <Router />
       </SafeAreaView>
     </PersistGate>

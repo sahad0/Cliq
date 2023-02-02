@@ -8,6 +8,7 @@ import CreateOrganization from '../pages/OrganisationControl/CreateOrganization'
 import { useAppSelector } from '../Hooks/hooks';
 import OtpVerifyForgotPass from '../pages/auth/OtpVerifyForgotPass';
 import ResetPassword from '../pages/auth/ResetPassword';
+import NameOrganisation from '../pages/OrganisationControl/NameOrganisation';
 
 
 
@@ -32,6 +33,7 @@ export type RootStackParams = {
     }
   },
   CreateOrganization:undefined,
+  NameOrganisation:undefined,
 
   
 
@@ -52,7 +54,7 @@ export default function Router():JSX.Element {
     
     <NavigationContainer >
          <Stack.Navigator  screenOptions={{headerShown:false,}}  initialRouteName={'Login'} >
-          {
+          {/* {
             auth==='' && (
               <>
                 <Stack.Screen  options={{animation:'fade_from_bottom'}} name='Login' component={Login} />
@@ -72,12 +74,14 @@ export default function Router():JSX.Element {
             )
           }
           {
-            auth!==''&& (
+            auth!==''&& ( */}
               <>
                  <Stack.Screen  options={{animation:'slide_from_right'}} name='CreateOrganization' component={CreateOrganization} />
+                 <Stack.Screen  options={{animation:'slide_from_right'}} name='NameOrganisation' component={NameOrganisation} />
+
               </>
-            )
-          }
+            {/* )
+          } */}
             
 
            

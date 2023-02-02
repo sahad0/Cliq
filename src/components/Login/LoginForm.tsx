@@ -2,7 +2,6 @@ import { View, Text, TextInput, Touchable, TouchableOpacity, Image, Button, Acti
 import React, { FC, useEffect, useReducer, useState } from 'react'
 import AuthAnimated from '../../Extra/AuthAnimated';
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
-import Icon from 'react-native-vector-icons/AntDesign';
 import axios from 'axios';
 import { Formik,  FormikValues , FormikProps} from 'formik'
 import { emailSchema } from '../../Extra/YupSchema/Schema'
