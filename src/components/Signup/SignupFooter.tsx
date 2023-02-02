@@ -1,11 +1,11 @@
 
 
 import { View, Text, Image, TextInput, StyleSheet, Button, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { FC } from 'react'
 
 type AppProps = { height: number };
 
-export const SignupFooter = ({height}:AppProps):JSX.Element => {
+ const SignupFooter:FC<AppProps> = ({height}):JSX.Element => {
 
   return (
     <>
@@ -23,3 +23,6 @@ export const SignupFooter = ({height}:AppProps):JSX.Element => {
     </>
   )
 }
+
+
+export default SignupFooter;

@@ -1,7 +1,8 @@
 import { View, Text, TouchableOpacity, Keyboard, Dimensions } from 'react-native'
 import React, { useState } from 'react'
-import { LoginHeader } from '../../components/Login/LoginHeader';
-import { LoginForm } from '../../components/Login/LoginForm';
+import  LoginHeader  from '../../components/Login/LoginHeader';
+import  LoginForm  from '../../components/Login/LoginForm';
+import { KeyboardAvoidingView } from 'react-native';
 
 
 interface User  {
@@ -24,7 +25,9 @@ export const Login = ({navigation}:any):JSX.Element=> {
     <View style={{flex:1,backgroundColor:'white'}}>
     <TouchableOpacity onPress={()=>Keyboard.dismiss()} activeOpacity={1}>
         <LoginHeader height={height} width={width} text1={text1} text2={text2}/>
+        <KeyboardAvoidingView>
         <LoginForm height={height} width={width} navigation={navigation} setUser={setUser} user={user} />
+        </KeyboardAvoidingView>
     </TouchableOpacity>
 </View>
   )

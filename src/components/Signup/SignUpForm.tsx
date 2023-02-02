@@ -1,5 +1,5 @@
 import { View, Text, Image, TextInput, StyleSheet, Button, TouchableOpacity, ActivityIndicator, KeyboardAvoidingView } from 'react-native'
-import React, { useReducer, useState } from 'react'
+import React, { FC, useReducer, useState } from 'react'
 import { Formik, FormikProps, FormikValues } from 'formik';
 import { signupSchema } from '../../Extra/YupSchema/Schema';
 import axios from 'axios';
@@ -13,7 +13,7 @@ type PropsForm = {
 }
 type Error = false|true;
 
-export const SignUpForm = ({height,width,navigation}:AppProps):JSX.Element => {
+ const SignUpForm:FC<AppProps> = ({height,width,navigation}):JSX.Element => {
 
     const initialValue = {
         email:'',
@@ -127,3 +127,5 @@ export const SignUpForm = ({height,width,navigation}:AppProps):JSX.Element => {
     </>
   )
 }
+
+export default SignUpForm;

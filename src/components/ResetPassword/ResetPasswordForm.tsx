@@ -1,16 +1,17 @@
 import { View, Text, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native'
-import React, { useReducer, useState } from 'react'
+import React, { FC, useReducer, useState } from 'react'
 import { Formik, FormikProps, FormikValues } from 'formik'
 import { resetPasswordSchema } from '../../Extra/YupSchema/Schema'
 import requestStatus, { initial_state } from '../../utils/LoaderHandling'
 import axios from 'axios'
+import { Keyboard } from 'react-native'
 
 
 type Values = {
     password:string,
     passwordConfirmation:string
 }
-type Success = true|false;
+// type Success = true|false;
 type focusBool = {
     focus1:boolean,
     focus2:boolean,
@@ -21,31 +22,34 @@ type AppProps = {
     navigation:any,
     user:object,
 }
-export default function ResetPasswordForm({width,height,navigation,user}:AppProps) {
+type Success = 'success'|'failure'|'';
+ const  ResetPasswordForm:FC<AppProps> = ({width,height,navigation,user}):JSX.Element => {
 
 
   const [focus,setFocus] = useState<focusBool>({focus1:false,focus2:false});
-  const [success,setSuccess] = useState<Success>(false);
+  const [success,setSuccess] = useState<Success>('');
   const [eventReducer,setEventReducer] = useReducer(requestStatus,initial_state);
 
     const initialValue:Values = {password:'',passwordConfirmation:''}
 
 
     const handlePasswordChange = async(values:FormikValues):Promise<void>=>{
+      setSuccess('');
         try {
             setEventReducer({type:'loading'});
             const changePass = await axios.post('/reset-password',{...user,password:values.passwordConfirmation});
             if(changePass.data.message){
                 setEventReducer({type:'success'});
-                setSuccess(true);
+                setSuccess('success');
+                Keyboard.dismiss();
                 setTimeout(()=>{
                     navigation.navigate('Login');
-                },4000);
+                },1000);
                 
             }
         } 
         catch(err:any){
-          console.log(err.request.responseText);
+          setSuccess('failure');
           setEventReducer({type:'error'});
 
         }
@@ -64,9 +68,13 @@ export default function ResetPasswordForm({width,height,navigation,user}:AppProp
           {(errors.passwordConfirmation) &&  <><Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>
                     {errors.passwordConfirmation.toString()}
                   </Text></>}
-            {success && <><Text style={{fontSize:height*0.015,color:'green',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>
+                  {success==='success' ? <><Text style={{fontSize:height*0.015,color:'green',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>
                     {'Password Reset Successfull'}
-                  </Text></>}
+                  </Text></>
+                  :
+                  <>
+                  <Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>{'( New password cannot be same as old password! )'}</Text>
+                  </>}
 
           <TouchableOpacity onPress={handleSubmit} style={{paddingHorizontal:height*0.1,backgroundColor:'#159AFF',width:width*0.9,alignSelf:'center',paddingVertical:height*0.02,marginTop:height*0.1}}>
               
@@ -90,3 +98,6 @@ export default function ResetPasswordForm({width,height,navigation,user}:AppProp
     </View>
   )
 }
+
+
+export default ResetPasswordForm;

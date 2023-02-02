@@ -1,6 +1,6 @@
 import { View, Text, TextInput, Touchable, TouchableOpacity, Image, Button, ActivityIndicator } from 'react-native'
-import React, { useEffect, useReducer, useState } from 'react'
-import AuthAnimated from '../../Extra/AuthAnimated'
+import React, { FC, useEffect, useReducer, useState } from 'react'
+import AuthAnimated from '../../Extra/AuthAnimated';
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
 import Icon from 'react-native-vector-icons/AntDesign';
 import axios from 'axios';
@@ -30,7 +30,7 @@ type checkMail = boolean;
 
 
 
-export const LoginForm = ({height,width,navigation,setUser,user}:Props):JSX.Element=> {
+ const LoginForm:FC<Props> = ({height,width,navigation,setUser,user}):JSX.Element=> {
 
   const initialValues: FormikValues = { email: '' };
   const [visible,setVisible] = useState<Visible>(false);
@@ -64,7 +64,6 @@ export const LoginForm = ({height,width,navigation,setUser,user}:Props):JSX.Elem
       
     } catch (error) {
       setEventReducer({type:'error'});
-      console.log(error);
     }
   }
 
@@ -131,7 +130,7 @@ export const LoginForm = ({height,width,navigation,setUser,user}:Props):JSX.Elem
         </>
       }
 
-        <TouchableOpacity  onPress={()=>navigation.navigate('ForgotPassword')} style={{marginTop:height*0.06}}>
+        <TouchableOpacity  onPress={()=>navigation.navigate('ForgotPassword')} style={{marginTop:height*0.06,alignSelf:'center'}}>
            <Text style={{color:'#159AFF',alignSelf:'center',fontFamily:'ZohoBold',}}>Forgot Password?</Text>
 
         </TouchableOpacity>
@@ -140,11 +139,11 @@ export const LoginForm = ({height,width,navigation,setUser,user}:Props):JSX.Elem
           Sign in using 
         </Text>
 
-        <TouchableOpacity>
+        <TouchableOpacity style={{alignSelf:'center',}}>
             <Image source={require('../../assets/images/google.png')} style={{height:height*0.05,width:height*0.05,alignSelf:'center'}} resizeMode='contain' />
         </TouchableOpacity> 
         <View style={{margin:height*0.03,flexDirection:'row',justifyContent:'center'}}>
-          <Text style={{fontFamily:'ZohoRegular'}}>Don't have Zoho account? </Text>
+          <Text style={{fontFamily:'ZohoRegular',color:'gray'}}>Don't have Zoho account? </Text>
           <TouchableOpacity onPress={()=>navigation.navigate('SignUp')}>
             <Text style={{color:'#159AFF',alignSelf:'center',fontFamily:'ZohoBold',}}>Sign up now!</Text>
           </TouchableOpacity>
@@ -153,3 +152,5 @@ export const LoginForm = ({height,width,navigation,setUser,user}:Props):JSX.Elem
     </View>
   )
 } 
+
+export default LoginForm;

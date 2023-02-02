@@ -1,5 +1,5 @@
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native'
-import React, { useReducer, useState } from 'react'
+import React, { FC, useReducer, useState } from 'react'
 import AuthInput from '../../Extra/AuthInput'
 import { otpSchema } from '../../Extra/YupSchema/Schema'
 import { Formik, FormikProps, FormikValues } from 'formik'
@@ -17,7 +17,7 @@ type Values = {
 }
 type focusBool = true|false;
 
-export default function OtpVerifyFormForgotPass({width,height,navigation,email}:Props):JSX.Element {
+ const OtpVerifyFormForgotPass:FC<Props> = ({width,height,navigation,email}):JSX.Element => {
     const [focus,setFocus] = useState<focusBool>(false);
     const [eventReducer,setEventReducer] = useReducer(requestStatus,initial_state);
     const [error,setError] =  useState<focusBool>(false);
@@ -99,3 +99,5 @@ export default function OtpVerifyFormForgotPass({width,height,navigation,email}:
     </>
   )
 }
+
+export default OtpVerifyFormForgotPass;

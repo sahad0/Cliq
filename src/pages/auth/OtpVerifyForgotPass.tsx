@@ -1,6 +1,6 @@
-import { View, Text, Dimensions, TouchableOpacity, Keyboard } from 'react-native'
+import { View, Text, Dimensions, TouchableOpacity, Keyboard, KeyboardAvoidingView } from 'react-native'
 import React from 'react'
-import { LoginHeader } from '../../components/Login/LoginHeader'
+import  LoginHeader  from '../../components/Login/LoginHeader'
 import OtpVerifyFormForgotPass from '../../components/OtpVerifyForgotPass/OtpVerifyFormForgotPass';
 
 export default function OtpVerifyForgotPass({navigation,route}:any):JSX.Element {
@@ -14,7 +14,9 @@ export default function OtpVerifyForgotPass({navigation,route}:any):JSX.Element 
     <View style={{flex:1,backgroundColor:'white'}}>
       <TouchableOpacity style={{flex:1}} activeOpacity={1} onPress={()=>Keyboard.dismiss()}>
         <LoginHeader height={height} width={width} text1={text1} text2={text2} />
+        <KeyboardAvoidingView>
         <OtpVerifyFormForgotPass height={height} width={width} navigation={navigation} email={route.params.email} />
+        </KeyboardAvoidingView>
         </TouchableOpacity>
     </View> 
   )

@@ -1,5 +1,5 @@
 import { View, Text, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native'
-import React, { useReducer, useState } from 'react'
+import React, { FC, useReducer, useState } from 'react'
 import AuthInput from '../../Extra/AuthInput'
 import axios from 'axios'
 import requestStatus, { initial_state } from '../../utils/LoaderHandling'
@@ -18,7 +18,7 @@ interface Values {
 }
 
 
-export default function ForgetPasswordForm({height,width,navigation}:Props):JSX.Element {
+ const ForgetPasswordForm:FC<Props> = ({height,width,navigation}):JSX.Element => {
 
   const [eventReducer,setEventReducer] = useReducer(requestStatus,initial_state);
   const [focus,setFocus] = useState<focusBool>(false);
@@ -96,3 +96,5 @@ export default function ForgetPasswordForm({height,width,navigation}:Props):JSX.
     </View>
   )
 }
+
+export default ForgetPasswordForm;

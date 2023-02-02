@@ -14,7 +14,6 @@ const requestStatus = (state:any,action:any) => {
           loading: false,
         };
     }
-    console.log(action);
   };
   type Istate = {
     loading:boolean,

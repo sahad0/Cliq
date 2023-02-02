@@ -1,5 +1,5 @@
 import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native'
-import React, { useReducer, useState } from 'react'
+import React, { FC, useReducer, useState } from 'react'
 import { Formik, FormikProps, FormikValues } from 'formik';
 import { otpSchema } from '../../Extra/YupSchema/Schema';
 import axios from 'axios';
@@ -27,7 +27,7 @@ interface Values {
 }
 
 
-export  const OtpVerifyFormSignUp = ({height,width,user}:AppProps):JSX.Element =>{
+  const OtpVerifyFormSignUp:FC<AppProps> = ({height,width,user}):JSX.Element =>{
   const [eventReducer,setEventReducer] = useReducer(requestStatus,initial_state);
   const [error,setError] = useState<Error>({set:false,message:''});
   const dispatch = useAppDispatch();
@@ -130,3 +130,6 @@ export  const OtpVerifyFormSignUp = ({height,width,user}:AppProps):JSX.Element =
     </View>
   )
 }
+
+
+export default OtpVerifyFormSignUp;

@@ -1,5 +1,5 @@
 import { View, Text, TextInput, TouchableOpacity, Button, ActivityIndicator } from 'react-native'
-import React, { useEffect, useReducer, useState } from 'react'
+import React, { FC, useEffect, useReducer, useState } from 'react'
 import Animated, { FadeInDown, } from 'react-native-reanimated';
 import { Formik, FormikProps, FormikValues } from 'formik';
 import axios from 'axios';
@@ -25,7 +25,7 @@ type userDetail  ={
   password?:string,
 }
 
-export default function AuthAnimated({height,width,inputStr,btnStr,navigation,user,setUser}:Props):JSX.Element {
+const AuthAnimated:FC<Props> = ({height,width,inputStr,btnStr,navigation,user,setUser}:Props):JSX.Element =>{
 
 
     const [focus,setFocus] = useState<FocusBool>(false);
@@ -54,7 +54,6 @@ export default function AuthAnimated({height,width,inputStr,btnStr,navigation,us
         
         if(data){
           delete data.message;
-          console.log(data);
           dispatch(loginController(data));
           setEventReducer({type:'success'});
 
@@ -123,3 +122,5 @@ export default function AuthAnimated({height,width,inputStr,btnStr,navigation,us
       </Animated.View>
     )
 }
+
+export default AuthAnimated;

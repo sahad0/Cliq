@@ -1,5 +1,5 @@
 import { View, Text, Image } from 'react-native'
-import React from 'react'
+import React, { FC } from 'react'
 
 type Props = {
     height:number,
@@ -9,7 +9,7 @@ type Props = {
 }
 
 
-export const LoginHeader = ({height,width,text1,text2}:Props)=> {
+ const LoginHeader:FC<Props> = ({height,width,text1,text2})=> {
   return (
     <View>
         <Image source={require('../../assets/images/zoho.png')}  style={{height:height*0.15,width:height*0.15,marginLeft:width*0.03}} resizeMode={'contain'}  />
@@ -19,3 +19,6 @@ export const LoginHeader = ({height,width,text1,text2}:Props)=> {
     </View>
   )
 }
+
+
+export default LoginHeader;
