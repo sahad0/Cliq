@@ -7,6 +7,10 @@ import { PersistGate } from 'redux-persist/lib/integration/react';
 import { configureStore } from '@reduxjs/toolkit';
 import {persistReducer,persistStore} from 'redux-persist';
 import cartReducer from './src/store/store';
+import axios from 'axios';
+
+
+
 
 const persistConfig = {
   key: 'root',
@@ -23,11 +27,18 @@ const store = configureStore({
     serializableCheck: false,
   }),
 });
-
-
 const persistor = persistStore(store);
+
+
+
+
+
 export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+export type AppDispatch = typeof store.dispatch;4
+
+
+
+axios.defaults.baseURL = 'http://18.212.181.98/api/auth';
 
 
 
