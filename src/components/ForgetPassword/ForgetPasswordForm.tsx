@@ -1,15 +1,16 @@
 import { View, Text, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native'
 import React, { FC, useReducer, useState } from 'react'
-import AuthInput from '../../Extra/AuthInput'
 import axios from 'axios'
 import requestStatus, { initial_state } from '../../utils/LoaderHandling'
 import { Formik, FormikProps, FormikValues } from 'formik'
 import { emailSchema } from '../../Extra/YupSchema/Schema'
+import { NavigationProp, useNavigation } from '@react-navigation/native'
+import { RootStackParams } from '../../router/router'
+import {  NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 type Props = {
     height:number,
     width:number,
-    navigation:any,
 }
 type focusBool = true|false;
 type Error = true |false;
@@ -18,13 +19,14 @@ interface Values {
 }
 
 
- const ForgetPasswordForm:FC<Props> = ({height,width,navigation}):JSX.Element => {
+ const ForgetPasswordForm:FC<Props> = ({height,width,}):JSX.Element => {
 
   const [eventReducer,setEventReducer] = useReducer(requestStatus,initial_state);
   const [focus,setFocus] = useState<focusBool>(false);
 
   const [handleError,setHandleError] = useState<Error>(false);
 
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParams,'ForgotPassword'>>();
 
 
   const handleEmail = async(values:FormikValues):Promise<void>=>{

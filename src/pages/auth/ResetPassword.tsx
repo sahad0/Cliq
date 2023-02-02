@@ -6,23 +6,18 @@ import ResetPasswordForm from '../../components/ResetPassword/ResetPasswordForm'
 import { KeyboardAvoidingView } from 'react-native'
 
 
-type AppProps={
-    navigation:any,
-    route:any,
-}
-    
 
 
 
-export default function ResetPassword({navigation,route}:AppProps):JSX.Element {
+
+export default function ResetPassword():JSX.Element {
     const {width, height} = Dimensions.get('screen');
-    const {user} = route.params;
   return (
     <View style={{flex:1,backgroundColor:'white'}}>
         <TouchableOpacity style={{flex:1}} activeOpacity={1} onPress={()=>Keyboard.dismiss()}>
         <LoginHeader height={height} width={width} text1='Enter New Password' text2='Enter your new password, please include capital letters and symbols to improve safety!' />
         <KeyboardAvoidingView>
-        <ResetPasswordForm height={height} width={width} navigation={navigation}    user={user} />
+        <ResetPasswordForm height={height} width={width}    />
         </KeyboardAvoidingView>
         </TouchableOpacity>
     </View>

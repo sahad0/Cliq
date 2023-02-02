@@ -13,4 +13,13 @@ export default function CreateOrganization() {
       <Button title='logout' onPress={()=> dispatch(logoutController())} />
     </View>
   )
+
+
+
+
+  // return(
+  //   <>
+      
+  //   </>
+  // )
 }

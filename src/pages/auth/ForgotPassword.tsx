@@ -4,7 +4,7 @@ import  LoginHeader from '../../components/Login/LoginHeader'
 import  LoginForm  from '../../components/Login/LoginForm';
 import ForgetPasswordForm from '../../components/ForgetPassword/ForgetPasswordForm';
 
-export default function ForgotPassword({navigation}:any):JSX.Element {
+export default function ForgotPassword():JSX.Element {
 
     const {width,height} = Dimensions.get('screen');
     const text1 = 'Forgot Password';
@@ -15,7 +15,7 @@ export default function ForgotPassword({navigation}:any):JSX.Element {
         <TouchableOpacity onPress={()=>Keyboard.dismiss()} activeOpacity={1}>
             <LoginHeader height={height} width={width} text1={text1} text2={text2} />
             <KeyboardAvoidingView>
-            <ForgetPasswordForm height={height} width={width} navigation={navigation} />
+            <ForgetPasswordForm height={height} width={width} />
             </KeyboardAvoidingView>
         </TouchableOpacity>
     </View>

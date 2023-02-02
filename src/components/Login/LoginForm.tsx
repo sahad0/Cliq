@@ -4,10 +4,12 @@ import AuthAnimated from '../../Extra/AuthAnimated';
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
 import Icon from 'react-native-vector-icons/AntDesign';
 import axios from 'axios';
-import { Formik,  FormikValues , FormikErrors, FormikProps} from 'formik'
+import { Formik,  FormikValues , FormikProps} from 'formik'
 import { emailSchema } from '../../Extra/YupSchema/Schema'
 import requestStatus, { initial_state } from '../../utils/LoaderHandling'
-
+import { useNavigation } from '@react-navigation/native';
+import { RootStackParams } from '../../router/router';
+import {  NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 
 
@@ -18,7 +20,6 @@ type UserType = {
 type Props = {
   height:number,
   width:number,
-  navigation:any,
   setUser:any,
   user:UserType,
 }
@@ -30,7 +31,7 @@ type checkMail = boolean;
 
 
 
- const LoginForm:FC<Props> = ({height,width,navigation,setUser,user}):JSX.Element=> {
+ const LoginForm:FC<Props> = ({height,width,setUser,user}):JSX.Element=> {
 
   const initialValues: FormikValues = { email: '' };
   const [visible,setVisible] = useState<Visible>(false);
@@ -38,6 +39,7 @@ type checkMail = boolean;
   const [emailExist,setEmailExist] = useState<focusBool>(true);
 
   const [eventReducer,setEventReducer] = useReducer(requestStatus,initial_state);
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParams,'Login'>>()
 
 
   const checkEmailExist = async(values: FormikValues): Promise<void>=>{
@@ -81,7 +83,7 @@ type checkMail = boolean;
               <Text style={{fontFamily:'ZohoRegular',color:'#159AFF',}}>Change</Text>
             </TouchableOpacity>
           </View>
-          <AuthAnimated setUser={setUser} user={user}  height={height} width={width} inputStr='Password' btnStr='Next' nvgStr='' navigation={navigation}/>
+          <AuthAnimated setUser={setUser} user={user}  height={height} width={width} inputStr='Password' btnStr='Next' nvgStr='' />
           
         </>
         :

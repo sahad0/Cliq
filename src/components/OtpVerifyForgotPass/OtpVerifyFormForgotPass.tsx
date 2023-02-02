@@ -1,26 +1,28 @@
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native'
 import React, { FC, useReducer, useState } from 'react'
-import AuthInput from '../../Extra/AuthInput'
 import { otpSchema } from '../../Extra/YupSchema/Schema'
 import { Formik, FormikProps, FormikValues } from 'formik'
 import requestStatus, { initial_state } from '../../utils/LoaderHandling'
 import axios from 'axios'
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { RootStackParams } from '../../router/router'
 
 type Props = {
     height:number,
     width:number,
-    navigation:any,
-    email:string,
 }
 type Values = {
     otp :string,
 }
 type focusBool = true|false;
 
- const OtpVerifyFormForgotPass:FC<Props> = ({width,height,navigation,email}):JSX.Element => {
+ const OtpVerifyFormForgotPass:FC<Props> = ({width,height}):JSX.Element => {
     const [focus,setFocus] = useState<focusBool>(false);
     const [eventReducer,setEventReducer] = useReducer(requestStatus,initial_state);
     const [error,setError] =  useState<focusBool>(false);
+    const navigation = useNavigation<NativeStackNavigationProp<RootStackParams,'OtpVerifyForgotPass'>>();
+    const {params:{email}} = useRoute<RouteProp<RootStackParams,'OtpVerifyForgotPass'>>();
 
     const style = StyleSheet.create({
         inputField :{

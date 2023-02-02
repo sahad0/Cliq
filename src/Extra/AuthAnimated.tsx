@@ -14,7 +14,6 @@ type Props = {
     inputStr:string,
     btnStr:string,
     nvgStr:string,
-    navigation:any,
     user:object,
     setUser:any,
 }
@@ -25,7 +24,7 @@ type userDetail  ={
   password?:string,
 }
 
-const AuthAnimated:FC<Props> = ({height,width,inputStr,btnStr,navigation,user,setUser}:Props):JSX.Element =>{
+const AuthAnimated:FC<Props> = ({height,width,inputStr,btnStr,user,setUser}:Props):JSX.Element =>{
 
 
     const [focus,setFocus] = useState<FocusBool>(false);

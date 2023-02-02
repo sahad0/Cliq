@@ -4,8 +4,11 @@ import { Formik, FormikProps, FormikValues } from 'formik';
 import { signupSchema } from '../../Extra/YupSchema/Schema';
 import axios from 'axios';
 import requestStatus, { initial_state } from '../../utils/LoaderHandling';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParams } from '../../router/router';
 
-type AppProps = { height: number,width:number,navigation:any };
+type AppProps = { height: number,width:number,};
 type PropsForm = {
     email:string,
     password:string,
@@ -13,7 +16,7 @@ type PropsForm = {
 }
 type Error = false|true;
 
- const SignUpForm:FC<AppProps> = ({height,width,navigation}):JSX.Element => {
+ const SignUpForm:FC<AppProps> = ({height,width,}):JSX.Element => {
 
     const initialValue = {
         email:'',
@@ -22,6 +25,7 @@ type Error = false|true;
     }
     const [eventReducer,setEventReducer] = useReducer(requestStatus,initial_state);
     const [emailExist,setEmailExist] = useState<Error>(false);
+    const navigation = useNavigation<NativeStackNavigationProp<RootStackParams,'SignUp'>>();
 
 
 

@@ -5,19 +5,18 @@ import  OtpVerifyFormSignUp  from '../../components/OtpVerifySignUp/OtpVerifyFor
 
 
 
-export default function OtpVerifySignUp({navigation,route}:any):JSX.Element {
+export default function OtpVerifySignUp():JSX.Element {
 
     const {width,height} = Dimensions.get('screen');
-    const {user} = route.params;
 
 
 
 
   return (
     <KeyboardAvoidingView style={{flex:1,backgroundColor:'white'}}>
-        <SignupHeader height={height} width={width} navigation={navigation} />
+        <SignupHeader height={height} width={width}  />
         <KeyboardAvoidingView>
-        <OtpVerifyFormSignUp height={height} width={width} user={user} />
+        <OtpVerifyFormSignUp height={height} width={width}  />
         </KeyboardAvoidingView>
     </KeyboardAvoidingView>
   )

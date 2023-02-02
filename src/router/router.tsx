@@ -1,7 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Signup from '../pages/auth/Signup';
-import  {Login}  from '../pages/auth/Login';
+import  Login  from '../pages/auth/Login';
 import ForgotPassword from '../pages/auth/ForgotPassword';
 import OtpVerifySignUp from '../pages/auth/OtpVerifySignUp';
 import CreateOrganization from '../pages/OrganisationControl/CreateOrganization';
@@ -10,14 +10,37 @@ import OtpVerifyForgotPass from '../pages/auth/OtpVerifyForgotPass';
 import ResetPassword from '../pages/auth/ResetPassword';
 
 
-type userAuth = {
-  token : object,
+
+export type RootStackParams = {
+  Login:undefined,
+  SignUp:undefined,
+  OtpVerifySignUp:{
+    user:{
+      email:string,
+      password:string,
+      phone:string,
+    }
+  },
+  ForgotPassword:undefined,
+  OtpVerifyForgotPass:{
+    email:string
+  },
+  ResetPassword:{
+    user:{
+      email:string,
+      otp:string,
+    }
+  },
+  CreateOrganization:undefined,
+
+  
+
 }
-
-
-const Stack = createNativeStackNavigator(); 
+const Stack = createNativeStackNavigator<RootStackParams>(); 
 
 export default function Router():JSX.Element {
+
+
 
   const {token} = useAppSelector((state)=>state.cart.value);
 
@@ -40,7 +63,7 @@ export default function Router():JSX.Element {
     
                 <Stack.Screen  options={{animation:'slide_from_right'}} name='ForgotPassword' component={ForgotPassword} />
                 
-                <Stack.Screen  options={{animation:'slide_from_right'}} name='OtpVerifyForgotPass' component={OtpVerifyForgotPass} />
+                <Stack.Screen  options={{animation:'slide_from_right'}} name='OtpVerifyForgotPass' component={OtpVerifyForgotPass}  />
 
                 <Stack.Screen  options={{animation:'slide_from_right'}} name='ResetPassword' component={ResetPassword} />
 
@@ -51,7 +74,7 @@ export default function Router():JSX.Element {
           {
             auth!==''&& (
               <>
-                 <Stack.Screen  options={{animation:'slide_from_right'}} name='createOrg' component={CreateOrganization} />
+                 <Stack.Screen  options={{animation:'slide_from_right'}} name='CreateOrganization' component={CreateOrganization} />
               </>
             )
           }

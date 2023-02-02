@@ -10,7 +10,7 @@ interface User  {
   password:string,
 }
 
-export const Login = ({navigation}:any):JSX.Element=> {
+ const Login = ():JSX.Element=> {
 
     const {height,width} = Dimensions.get('screen');
 
@@ -26,9 +26,11 @@ export const Login = ({navigation}:any):JSX.Element=> {
     <TouchableOpacity onPress={()=>Keyboard.dismiss()} activeOpacity={1}>
         <LoginHeader height={height} width={width} text1={text1} text2={text2}/>
         <KeyboardAvoidingView>
-        <LoginForm height={height} width={width} navigation={navigation} setUser={setUser} user={user} />
+        <LoginForm height={height} width={width}  setUser={setUser} user={user} />
         </KeyboardAvoidingView>
     </TouchableOpacity>
 </View>
   )
 }
+
+export default Login;

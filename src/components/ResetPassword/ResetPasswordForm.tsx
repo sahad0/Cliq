@@ -5,6 +5,9 @@ import { resetPasswordSchema } from '../../Extra/YupSchema/Schema'
 import requestStatus, { initial_state } from '../../utils/LoaderHandling'
 import axios from 'axios'
 import { Keyboard } from 'react-native'
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { RootStackParams } from '../../router/router'
 
 
 type Values = {
@@ -19,17 +22,16 @@ type focusBool = {
 type AppProps = {
     width:number,
     height:number,
-    navigation:any,
-    user:object,
 }
 type Success = 'success'|'failure'|'';
- const  ResetPasswordForm:FC<AppProps> = ({width,height,navigation,user}):JSX.Element => {
+ const  ResetPasswordForm:FC<AppProps> = ({width,height}):JSX.Element => {
 
 
   const [focus,setFocus] = useState<focusBool>({focus1:false,focus2:false});
   const [success,setSuccess] = useState<Success>('');
   const [eventReducer,setEventReducer] = useReducer(requestStatus,initial_state);
-
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParams,'ForgotPassword'>>();
+  const {params:{user}} = useRoute<RouteProp<RootStackParams,'ResetPassword'>>();
     const initialValue:Values = {password:'',passwordConfirmation:''}
 
 
@@ -72,9 +74,10 @@ type Success = 'success'|'failure'|'';
                     {'Password Reset Successfull'}
                   </Text></>
                   :
+                  success==='failure'?
                   <>
                   <Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>{'( New password cannot be same as old password! )'}</Text>
-                  </>}
+                  </>:<></>}
 
           <TouchableOpacity onPress={handleSubmit} style={{paddingHorizontal:height*0.1,backgroundColor:'#159AFF',width:width*0.9,alignSelf:'center',paddingVertical:height*0.02,marginTop:height*0.1}}>
               
@@ -85,7 +88,7 @@ type Success = 'success'|'failure'|'';
                           </>
                           :
                           <>
-                            <Text style={{color:'white',alignSelf:'center',fontFamily:'ZohoRegular'}}>{success?'REDIRECTING..':'CONFIRM'}</Text>
+                            <Text style={{color:'white',alignSelf:'center',fontFamily:'ZohoRegular'}}>{success==='success'?'REDIRECTING..':'CONFIRM'}</Text>
     
                           </>
               }
