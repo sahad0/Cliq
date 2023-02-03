@@ -16,7 +16,7 @@ const CreateOrgHeader:FC<AppProps> = ({height,width}):JSX.Element => {
 
   return (
     <View>
-      <View style={{flexDirection:'row',justifyContent:'space-between',backgroundColor:'rgba(255,255,255,0.5)'}}>
+      <View style={{flexDirection:'row',justifyContent:'space-between',backgroundColor:'rgba(255,255,255,1)'}}>
         <View style={{flexDirection:'row',}}>
             <Image source={require('../../assets/images/cliq.png')} style={{height:height*0.12,width:width*0.12}} resizeMode={'contain'} />
             <Text style={{color:'black',fontFamily:'ZohoRegular',marginTop:height*0.042,fontSize:height*0.02}}>Cliq</Text>

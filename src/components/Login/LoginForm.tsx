@@ -44,7 +44,7 @@ type checkMail = boolean;
   const checkEmailExist = async(values: FormikValues): Promise<void>=>{
     try {
       setEventReducer({type:'loading'});
-      const check = await axios.post('/check-email',values);
+      const check = await axios.post('/auth/check-email',values);
       if(check){
         const {exists} = check.data;
         if(exists){

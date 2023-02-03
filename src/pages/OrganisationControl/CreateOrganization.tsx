@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { View, Text, SafeAreaView } from 'react-native'
 import React from 'react'
 import { Dimensions } from 'react-native';
 import CreateOrgHeader from '../../components/CreateOrganization/CreateOrgHeader';
@@ -11,12 +11,12 @@ export default function CreateOrganization():JSX.Element {
 
 
   return (
-    <View style={{flex:1,}}>
+    <SafeAreaView style={{flex:1,}}>
       <CreateOrgHeader height={height} width={width} />
       <CreateOrgBody height={height} width={width} />
       <CreateOrgFooter height={height} width={width} />
 
-    </View>
+    </SafeAreaView>
   )
 
 

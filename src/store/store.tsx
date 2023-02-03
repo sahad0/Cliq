@@ -1,9 +1,13 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 
-
-const val = {
+type StoreValue = {
+    token: string,
+    orgNewUser: boolean,
+}
+const val:StoreValue = {
        token:"",
+       orgNewUser:false,
 }
 
 
@@ -13,15 +17,11 @@ const storeSlice = createSlice({
     reducers: {
         loginController: (state, action) => {
              
-            const {token} = action.payload;
-            state.value = {...state.value,token};
-
-          
-
-
+            const {token,orgNewUser} = action.payload;
+            state.value = {...state.value,token,orgNewUser};
         },
         logoutController : (state) => {
-            const temp = {token:""};
+            const temp = {token:"",orgNewUser:false};
             state.value = temp;
 
         }

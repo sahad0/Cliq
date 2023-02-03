@@ -35,11 +35,11 @@ interface Values {
       setHandleError(false);
 
       setEventReducer({type:'loading'});
-      const {data} = await axios.post('/check-email',{email:values.email});
+      const {data} = await axios.post('/auth/check-email',{email:values.email});
       if(data){
         const {exists} = data;
         if(exists){
-          const sentOtp = await axios.post('/email-otp',{email:values.email});
+          const sentOtp = await axios.post('/auth/email-otp',{email:values.email});
           setEventReducer({type:'success'});
           navigation.navigate('OtpVerifyForgotPass',{email:values.email});
 

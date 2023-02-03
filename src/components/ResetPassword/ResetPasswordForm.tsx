@@ -39,7 +39,7 @@ type Success = 'success'|'failure'|'';
       setSuccess('');
         try {
             setEventReducer({type:'loading'});
-            const changePass = await axios.post('/reset-password',{...user,password:values.passwordConfirmation});
+            const changePass = await axios.post('/auth/reset-password',{...user,password:values.passwordConfirmation});
             if(changePass.data.message){
                 setEventReducer({type:'success'});
                 setSuccess('success');

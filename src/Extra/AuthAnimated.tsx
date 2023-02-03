@@ -48,14 +48,26 @@ const AuthAnimated:FC<Props> = ({height,width,inputStr,btnStr,user,setUser}:Prop
     const callLogin = async():Promise<void> =>{
       try {
         setEventReducer({type:'loading'});
-        const {data} = await axios.post('/login',user);
+        const {data} = await axios.post('/auth/login',user);
         setInValidCred(false);
         
         if(data){
-          delete data.message;
-          dispatch(loginController(data));
-          setEventReducer({type:'success'});
-
+          
+            delete data.message;
+            const createHeader = axios.create({
+              headers: {
+                Authorization : `Bearer ${data.token}`
+                }
+              
+            })
+            const data1 = await createHeader.get('organization/user-organizations');
+          
+            if(data1){
+              const {organizations} = data1.data;
+              const orgNewUser = organizations.length>0 ? false:true
+              dispatch(loginController({token:data.token,orgNewUser:orgNewUser}));
+              setEventReducer({type:'success'});
+            }
         }
         else{
         setEventReducer({type:'error'});

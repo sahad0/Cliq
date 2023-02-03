@@ -17,7 +17,7 @@ const CreateOrgFooter:FC<AppProps> = ({height,width}):JSX.Element => {
 
 
   return (
-    <View style={{height:height*0.5,backgroundColor:'rgba(255,255,255,0.5)'}}>
+    <View style={{height:height*0.5,backgroundColor:'rgba(255,255,255,1)'}}>
       
         <TouchableOpacity onPress={()=>navigation.navigate('NameOrganisation')}  style={{borderColor:'black',elevation:0.5,borderRadius:5,paddingHorizontal:height*0.1,backgroundColor:'#159AFF',width:width*0.9,alignSelf:'center',paddingVertical:height*0.02,marginTop:height*0.1}}>
             <Text style={{color:'white',alignSelf:'center',fontFamily:'ZohoRegular',}}>{"Create your own company!"}</Text>

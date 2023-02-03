@@ -42,7 +42,7 @@ type Error = false|true;
     const sentSignUpOtp =async (values:PropsForm):Promise<void> => {
         try {
             setEventReducer({type: 'loading'});
-            const check = await axios.post('/check-email',values);
+            const check = await axios.post('/auth/check-email',values);
             if(check){
               const {exists} = check.data;
               if(exists){
@@ -53,7 +53,7 @@ type Error = false|true;
               else{
                 setEmailExist(false);
                 const {email} = values;
-                const x = await axios.post('/email-otp',{email});
+                const x = await axios.post('/auth/email-otp',{email});
                 if(x){
                   if(x.status===200){
                     setEventReducer({type: 'success'});
@@ -64,8 +64,10 @@ type Error = false|true;
               }
             }
             
-        } catch (error) {
+        } catch (err:any){
+          if(err){
             setEventReducer({type:'error'});
+          }
         }
     }
 

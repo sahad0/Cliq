@@ -20,20 +20,19 @@ const CreateOrgBody:FC<AppProps> = ({height,width}):JSX.Element => {
 
   const userProfile = async():Promise<void> => {
     try {
-      let reqInstance = axios.create({headers: {  Authorization : `Bearer ${token}`}});
-       const user = await reqInstance.get('/profile');
+       const user = await axios.get('/auth/profile');
        if(user){
             const {first_name} = user.data.profile;
             setName(first_name);
        }
       
-    } catch (error) {
+    } catch (err:any) {
         setName('');
     }
 
   }
   return (
-    <View style={{height:height*0.5,backgroundColor:'rgba(255,255,255,0.5)'}}>
+    <View style={{height:height*0.5,backgroundColor:'rgba(255,255,255,1)'}}>
         <View style={{marginTop:height*0.3}}>
       <Text style={{color:'black',fontFamily:'ZohoRegular',fontSize:height*0.03,marginLeft:width*0.03,marginBottom:0}}>Hey</Text>
 

@@ -38,7 +38,7 @@ export type AppDispatch = typeof store.dispatch;4
 
 
 
-axios.defaults.baseURL = 'http://18.212.181.98/api/auth';
+axios.defaults.baseURL = 'http://192.168.29.119:6969/api';
 
 
 

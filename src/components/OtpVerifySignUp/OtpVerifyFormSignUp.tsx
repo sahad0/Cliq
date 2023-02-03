@@ -45,11 +45,10 @@ interface Values {
             try {
                 setEventReducer({type:'loading'});
                 const val = {...user,...values};
-                
-                const data=  await axios.post('/register',val);
+                const {data}=  await axios.post('/auth/register',val);
                 if(data){
                   setError({set:false,message:''})
-                  dispatch(loginController({token:data.data.token}));
+                  dispatch(loginController({token:data.token,orgNewUser:true}));
                 }
               
                 setEventReducer({type:'success'});
@@ -94,7 +93,7 @@ interface Values {
             <Formik validateOnBlur={false} validateOnChange={false} validationSchema={otpSchema} initialValues={{otp:''}} onSubmit={SignUpfn}>
                 
                 {({ handleChange, handleBlur, handleSubmit,values ,errors}:FormikProps<Values>):JSX.Element => (<>
-                  <TextInput placeholder='OTP *' placeholderTextColor={'gray'} maxLength={6} onChangeText={handleChange('otp')} value={values.otp} style={[style.inputField,{marginTop:height*0.04,color:'gray'}]} />
+                  <TextInput keyboardType='phone-pad' placeholder='OTP *' placeholderTextColor={'gray'} maxLength={6} onChangeText={handleChange('otp')} value={values.otp} style={[style.inputField,{marginTop:height*0.04,color:'gray'}]} />
 
                 {errors.otp && (
                 <Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>

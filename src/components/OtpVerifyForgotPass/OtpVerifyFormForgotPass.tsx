@@ -38,7 +38,7 @@ type focusBool = true|false;
         try {
             setError(false);
             setEventReducer({type:'loading'});
-            const {data} = await axios.post('/check-otp',{email:email,otp:values.otp});
+            const {data} = await axios.post('/auth/check-otp',{email:email,otp:values.otp});
             if(data){
                 const {isValid} = data;
                 const user = {email:email,otp:values.otp}
