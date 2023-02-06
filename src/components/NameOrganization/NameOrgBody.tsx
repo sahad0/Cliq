@@ -6,6 +6,9 @@ import requestStatus, { initial_state } from '../../utils/LoaderHandling'
 import BouncyCheckbox from 'react-native-bouncy-checkbox'
 import axios from 'axios'
 import { endEvent } from 'react-native/Libraries/Performance/Systrace'
+import { useAppDispatch } from '../../Hooks/hooks'
+import { userTypeController } from '../../store/store'
+import { boolean } from 'yup'
 
 type AppProps = {
     height:number,
@@ -27,6 +30,8 @@ const NameOrgBody:FC<AppProps> = ({height,width}):JSX.Element => {
     const [toggleCheckBox, setToggleCheckBox] = useState<focusBool>(false)
   
     const [eventReducer,setEventReducer] = useReducer(requestStatus,initial_state);
+    const dispatch = useAppDispatch();
+
 
 
     const handleCreateOrg = async (values:FormikValues):Promise<void> => {
@@ -36,6 +41,7 @@ const NameOrgBody:FC<AppProps> = ({height,width}):JSX.Element => {
           const {data}  = await axios.post('/organization/create',val);
           if(data){
             setEventReducer({type: 'success'});
+            dispatch(userTypeController({orgNewUser:false}));
           }
           else{
             setEventReducer({type: 'error'});

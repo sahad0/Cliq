@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import { View, Text, SafeAreaView, StatusBar } from 'react-native'
 import React from 'react'
 import Router from './src/router/router';
@@ -38,7 +39,7 @@ export type AppDispatch = typeof store.dispatch;4
 
 
 
-axios.defaults.baseURL = 'http://192.168.29.119:6969/api';
+axios.defaults.baseURL = 'http://192.168.1.44:6969/api';
 
 
 

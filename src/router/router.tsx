@@ -11,7 +11,6 @@ import ResetPassword from '../pages/auth/ResetPassword';
 import NameOrganisation from '../pages/OrganisationControl/NameOrganisation';
 import axios from 'axios';
 import Organization from '../pages/OrganisationControl/Organization';
-import { useEffect } from 'react';
 
 
 
