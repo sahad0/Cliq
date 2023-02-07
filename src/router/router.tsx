@@ -11,6 +11,13 @@ import ResetPassword from '../pages/auth/ResetPassword';
 import NameOrganisation from '../pages/OrganisationControl/NameOrganisation';
 import axios from 'axios';
 import Organization from '../pages/OrganisationControl/Organization';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import ChatList from '../pages/chat/ChatList';
+import { StatusBar } from 'react-native';
+import TabNavigators from './navigators/TabNavigators';
+import DrawerNavigators from './navigators/DrawerNavigators';
 
 
 
@@ -41,7 +48,13 @@ export type RootStackParams = {
   
 
 }
+
+
+export type DrawerStackParams ={
+  ChatList:undefined;
+}
 const Stack = createNativeStackNavigator<RootStackParams>(); 
+const Drawer = createDrawerNavigator<DrawerStackParams>();
 
 export default function Router():JSX.Element {
 
@@ -56,10 +69,15 @@ export default function Router():JSX.Element {
 
 
 
+  
+
   return (
     
     <NavigationContainer >
-         <Stack.Navigator  screenOptions={{headerShown:false,}}  initialRouteName={'Login'} >
+        <DrawerNavigators />
+        {/* <TabNavigators /> */}
+
+         {/* <Stack.Navigator  screenOptions={{headerShown:false,}}  initialRouteName={'Login'} >
           {
             auth===''&&(
               <>
@@ -101,7 +119,7 @@ export default function Router():JSX.Element {
 
            
 
-        </Stack.Navigator>
+        </Stack.Navigator> */}
        
     </NavigationContainer>
   );

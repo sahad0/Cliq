@@ -52,7 +52,7 @@ function App(): JSX.Element {
     <Provider store={store}>
     <PersistGate persistor={persistor}>
       <SafeAreaView style={{flex:1,backgroundColor:'white'}}>
-        <StatusBar hidden />
+        <StatusBar barStyle={'light-content'} />
         <Router />
       </SafeAreaView>
     </PersistGate>
