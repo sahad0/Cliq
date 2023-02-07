@@ -6,12 +6,11 @@ import WidgetList from '../../pages/chat/WidgetList'
 import ChannelList from '../../pages/chat/ChannelList'
 import Ionicon from 'react-native-vector-icons/Ionicons'
 import Material from 'react-native-vector-icons/MaterialCommunityIcons'
+import CreateChannelStackNav from './CreateChannelStackNav'
+import { TabStackParams } from './NavTypes'
 
-export type TabStackParams ={
-    ChatList:undefined,
-    ChannelList:undefined,
-    WidgetList:undefined,
-}
+
+
 
 const Tab = createBottomTabNavigator<TabStackParams>();
 
@@ -50,7 +49,7 @@ export default function TabNavigators():JSX.Element {
             },
           }} />
 
-        <Tab.Screen name="ChannelList" component={ChannelList} options={{
+        <Tab.Screen name="CreateChannelStackNav" component={CreateChannelStackNav} options={{
             tabBarLabel: ({focused, color}) => (
               <Text style={{color: focused ? '#5f5aad' : 'gray',fontSize:height*0.015,marginBottom:height*0.015}}>Channels</Text>
             ),

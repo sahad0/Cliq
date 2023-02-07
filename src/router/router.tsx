@@ -12,11 +12,6 @@ import NameOrganisation from '../pages/OrganisationControl/NameOrganisation';
 import axios from 'axios';
 import Organization from '../pages/OrganisationControl/Organization';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import ChatList from '../pages/chat/ChatList';
-import { StatusBar } from 'react-native';
-import TabNavigators from './navigators/TabNavigators';
 import DrawerNavigators from './navigators/DrawerNavigators';
 
 
@@ -75,7 +70,6 @@ export default function Router():JSX.Element {
     
     <NavigationContainer >
         <DrawerNavigators />
-        {/* <TabNavigators /> */}
 
          {/* <Stack.Navigator  screenOptions={{headerShown:false,}}  initialRouteName={'Login'} >
           {
