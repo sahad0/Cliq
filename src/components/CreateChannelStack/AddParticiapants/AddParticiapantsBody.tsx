@@ -3,7 +3,6 @@ import React, { Dispatch, FC, PureComponent, SetStateAction, useEffect, useRef, 
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import AddParticipantsExt from './AddParticipantsExt';
 import { Selected, SelectedState } from '../../../pages/CreateChannelStack/AddParticipants';
-import CheckBox from '../../../Extra/Checkbox';
 
 type ItemProps = {
         id:string,
@@ -56,13 +55,13 @@ const RenderItem:FC<RenderType> = ({item,height,width,addId,selected}):JSX.Eleme
              {selected?.some(items =>  items.id===item.id) ?
              <>
                 {/* <CheckBox  isChecked={true} onPress={()=>{addId(item.id,item.name)}} /> */}
-                 <BouncyCheckbox isChecked={true} ref={(ref):any=>bouncyCheckboxRef=ref} fillColor='#5f5aad' size={20} useNativeDriver={true} onPress={()=>{addId(item.id,item.name)}} />
+                 <BouncyCheckbox disableBuiltInState isChecked={true} ref={(ref):any=>bouncyCheckboxRef=ref} fillColor='#5f5aad' size={20} useNativeDriver={true} onPress={()=>{addId(item.id,item.name)}} />
 
              </> :
              <>
                 {/* <CheckBox isChecked={false} onPress={()=>{addId(item.id,item.name)}} /> */}
 
-                 <BouncyCheckbox  isChecked={false} ref={(ref):any=>bouncyCheckboxRef=ref} fillColor='#5f5aad' size={20} useNativeDriver={true} onPress={()=>{addId(item.id,item.name)}} />
+                 <BouncyCheckbox disableBuiltInState  isChecked={false} ref={(ref):any=>bouncyCheckboxRef=ref} fillColor='#5f5aad' size={20} useNativeDriver={true} onPress={()=>{addId(item.id,item.name)}} />
              
 
              </> }  
