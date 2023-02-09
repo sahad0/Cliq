@@ -16,9 +16,9 @@ const CreateChannelFormHeader:FC<AppProps> = ({height,width}) => {
     const navigation = useNavigation<NativeStackNavigationProp<ChannelStackParams>>();
 
   return (
-    <View style={{height:height*0.13,backgroundColor:'#5f5aad',flexDirection:'row',alignItems:'center'}}>
+    <View style={{position:'absolute',width:width,height:height*0.13,backgroundColor:'#5f5aad',flexDirection:'row',alignItems:'center'}}>
        <StatusBar  barStyle={'default'} backgroundColor={'#5f5aad'} />
-        <TouchableOpacity onPress={()=>navigation.navigate('ChannelDetails')}>
+        <TouchableOpacity onPress={()=>navigation.navigate('CreateChannelMenu')}>
             <Antd name='arrowleft' color={'white'} size={25}  style={{marginLeft:width*0.06}}/>
         </TouchableOpacity>
         
@@ -27,4 +27,4 @@ const CreateChannelFormHeader:FC<AppProps> = ({height,width}) => {
   )
 }
 
-export default CreateChannelFormHeader
+export default CreateChannelFormHeader;

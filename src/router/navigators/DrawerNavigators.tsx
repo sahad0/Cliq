@@ -4,6 +4,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer'
 import TabNavigators from './TabNavigators';
 import DrawerContent from '../../Extra/DrawerContent';
 import { DrawerStackParams } from './NavTypes';
+import CreateChannelStackNav from './CreateChannelStackNav';
 
 
 
@@ -15,7 +16,7 @@ const DrawerNavigators = ():JSX.Element => {
    
     <Drawer.Navigator useLegacyImplementation={false} drawerContent={DrawerContent} screenOptions={{headerShown:false}}>
         
-        <Drawer.Screen name="Tab" component={TabNavigators} /> 
+        <Drawer.Screen name="CreateChannelStackNav" component={CreateChannelStackNav} /> 
 
     </Drawer.Navigator> 
   )

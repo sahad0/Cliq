@@ -1,23 +1,23 @@
 
 export type TabStackParams ={
     ChatList:undefined,
-    CreateChannelStackNav:{
-        ChannelDetails:undefined,
-        CreateChannelMenu:undefined,
-        CreateChannelForm:undefined,
-    }
+    ChannelDetails:undefined,
     WidgetList:undefined,
 }
 
 export type DrawerStackParams ={
-    Tab:undefined,
+    CreateChannelStackNav:undefined,
+    WidgetList:undefined,
+    ChatList:undefined,
   }
 
 
  export  type ChannelStackParams = {
+    TabNavigators:undefined,
     ChannelDetails:undefined,
     CreateChannelMenu:undefined,
     CreateChannelForm:undefined,
+    AddParticipants:undefined,
 
 }
   
