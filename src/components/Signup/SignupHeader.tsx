@@ -2,14 +2,14 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
 import React, { FC } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParams } from '../../router/router';
+import { AuthStackParams } from '../../router/navigators/AuthNav';
 
 
 type AppProps = { height: number,width:number,};
 
  const SignupHeader:FC<AppProps> = ({height,width,}):JSX.Element => {
 
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParams,'SignUp'>>();
+  const navigation = useNavigation<NativeStackNavigationProp<AuthStackParams,'SignUp'>>();
 
   return (
     <>

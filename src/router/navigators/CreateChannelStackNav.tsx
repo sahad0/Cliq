@@ -4,11 +4,17 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ChannelDetails from '../../pages/CreateChannelStack/ChannelDetails';
 import CreateChannelMenu from '../../pages/CreateChannelStack/CreateChannelMenu';
 import CreateChannelForm from '../../pages/CreateChannelStack/CreateChannelForm';
-import { ChannelStackParams } from './NavTypes';
 import TabNavigators from './TabNavigators';
 import AddParticipants from '../../pages/CreateChannelStack/AddParticipants';
 
+export  type ChannelStackParams = {
+  TabNavigators:undefined,
+  ChannelDetails:undefined,
+  CreateChannelMenu:undefined,
+  CreateChannelForm:undefined,
+  AddParticipants:undefined,
 
+}
 
 const Stack = createNativeStackNavigator<ChannelStackParams>(); 
 

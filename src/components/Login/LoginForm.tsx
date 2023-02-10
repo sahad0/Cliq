@@ -7,8 +7,8 @@ import { Formik,  FormikValues , FormikProps} from 'formik'
 import { emailSchema } from '../../Extra/YupSchema/Schema'
 import requestStatus, { initial_state } from '../../utils/LoaderHandling'
 import { useNavigation } from '@react-navigation/native';
-import { RootStackParams } from '../../router/router';
 import {  NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { AuthStackParams } from '../../router/navigators/AuthNav';
 
 
 
@@ -38,7 +38,7 @@ type checkMail = boolean;
   const [emailExist,setEmailExist] = useState<focusBool>(true);
 
   const [eventReducer,setEventReducer] = useReducer(requestStatus,initial_state);
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParams,'Login'>>()
+  const navigation = useNavigation<NativeStackNavigationProp<AuthStackParams,'Login'>>()
 
 
   const checkEmailExist = async(values: FormikValues): Promise<void>=>{

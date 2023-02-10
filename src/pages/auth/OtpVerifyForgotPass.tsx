@@ -2,9 +2,7 @@ import { View, Text, Dimensions, TouchableOpacity, Keyboard, KeyboardAvoidingVie
 import React from 'react'
 import  LoginHeader  from '../../components/Login/LoginHeader'
 import OtpVerifyFormForgotPass from '../../components/OtpVerifyForgotPass/OtpVerifyFormForgotPass';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParams } from '../../router/router';
+
 
 export default function OtpVerifyForgotPass():JSX.Element {
 

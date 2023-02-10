@@ -20,7 +20,7 @@ const Form3:FC<AppProps> = ({height,width,visibility,setVisibility}) => {
     <TouchableOpacity activeOpacity={1} style={{flexDirection:'row',justifyContent:'space-around',margin:height*0.01}} onPress={() => setVisibility(true)}  >
           <View>
             <Text style={{color:'black',fontSize:height*0.02}}>Open to all</Text>
-            <Text style={{color:'gray',fontSize:height*0.015}}>Anyone in your organization can find & join</Text>
+            <Text style={{color:'gray',fontSize:height*0.015,width:width*0.65}}>Anyone in your organization can find & join</Text>
           </View>
           <View>
           <RadioButton value="true" status={ visibility === true ? 'checked' : 'unchecked' } onPress={() => setVisibility(true)}/>

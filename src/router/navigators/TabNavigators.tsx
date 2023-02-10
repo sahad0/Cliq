@@ -1,16 +1,17 @@
 import { View, Text, Dimensions } from 'react-native'
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-
 import Ionicon from 'react-native-vector-icons/Ionicons'
 import Material from 'react-native-vector-icons/MaterialCommunityIcons'
-import CreateChannelStackNav from './CreateChannelStackNav'
-import { TabStackParams } from './NavTypes'
 import ChannelDetails from '../../pages/CreateChannelStack/ChannelDetails'
 import WidgetList from '../../pages/chat/WidgetList'
 import ChatList from '../../pages/ChatListStack/ChatList'
 
-
+export type TabStackParams ={
+  ChatList:undefined,
+  ChannelDetails:undefined,
+  WidgetList:undefined,
+}
 
 
 const Tab = createBottomTabNavigator<TabStackParams>();

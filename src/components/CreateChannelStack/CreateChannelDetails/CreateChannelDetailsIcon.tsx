@@ -2,9 +2,9 @@ import { View, Text, Pressable } from 'react-native'
 import React, { FC } from 'react'
 import Feather from  'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
-import { ChannelStackParams } from '../../../router/navigators/NavTypes';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { ChannelStackParams } from '../../../router/navigators/CreateChannelStackNav';
 
 type AppProps  ={
     height:number,

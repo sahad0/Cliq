@@ -1,12 +1,12 @@
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native'
-import React, { FC, useReducer, useState } from 'react'
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator, Pressable } from 'react-native'
+import React, { FC, useEffect, useReducer, useState } from 'react'
 import { otpSchema } from '../../Extra/YupSchema/Schema'
 import { Formik, FormikProps, FormikValues } from 'formik'
 import requestStatus, { initial_state } from '../../utils/LoaderHandling'
 import axios from 'axios'
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { RootStackParams } from '../../router/router'
+import { AuthStackParams } from '../../router/navigators/AuthNav'
 
 type Props = {
     height:number,
@@ -18,21 +18,27 @@ type Values = {
 type focusBool = true|false;
 
  const OtpVerifyFormForgotPass:FC<Props> = ({width,height}):JSX.Element => {
+
     const [focus,setFocus] = useState<focusBool>(false);
     const [eventReducer,setEventReducer] = useReducer(requestStatus,initial_state);
     const [error,setError] =  useState<focusBool>(false);
-    const navigation = useNavigation<NativeStackNavigationProp<RootStackParams,'OtpVerifyForgotPass'>>();
-    const {params:{email}} = useRoute<RouteProp<RootStackParams,'OtpVerifyForgotPass'>>();
+    const navigation = useNavigation<NativeStackNavigationProp<AuthStackParams,'OtpVerifyForgotPass'>>();
+    const {params:{email}} = useRoute<RouteProp<AuthStackParams,'OtpVerifyForgotPass'>>();
+    const [showTimer,setShowTimer] = useState<focusBool>(false);
+    const [counter,setCounter] = useState<number>(59);
+   
+    useEffect(()=>{
+        runTimer();
+    },[]);
 
-    const style = StyleSheet.create({
-        inputField :{
-            borderColor:'black',
-            borderWidth:1,
-            width:width*0.9,
-            alignSelf:'center',
-            paddingLeft:width*0.04
+    useEffect(()=>{
+        console.log(counter);
+        if(counter<1){
+
+            setShowTimer(false);
         }
-    });
+        else setTimeout(() => setCounter(counter - 1), 1000);
+    },[counter]);
 
     const handlePasswordChange = async(values:FormikValues):Promise<void>=>{
         try {
@@ -60,6 +66,22 @@ type focusBool = true|false;
     }
 
 
+
+    const runTimer  = async()=>{
+        try{
+            const sentOtp = await axios.post('/auth/email-otp',{email:email});
+            setShowTimer(true);
+            setCounter(59);
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
+
+   
+
+
+
   return (
     <>
         <View style={{marginTop:height*0.084}}>
@@ -79,7 +101,25 @@ type focusBool = true|false;
                           </Text>
                     </>
                 )}
-                  <TouchableOpacity onPress={handleSubmit} style={{paddingHorizontal:height*0.1,backgroundColor:'#159AFF',width:width*0.9,alignSelf:'center',paddingVertical:height*0.02,marginTop:height*0.1}}>
+
+                {
+                    showTimer ? 
+                        <>
+                            <View style={{flexDirection:'row',margin:height*0.03,marginTop:height*0.04}}>
+                                <Text style={{color:'black',fontFamily:'ZohoRegular'}}> Resend Otp in</Text>
+                                <Text style={{color:'#159AFF',marginLeft:width*0.02}}>{counter + " s"}</Text>
+                            </View>
+                        </>
+                        :
+                        <View style={{flexDirection:'row',margin:height*0.03,marginTop:height*0.04}}>
+                           <Text style={{color:'black',fontFamily:'ZohoRegular'}}>No code Recieved?</Text>
+                           <TouchableOpacity onPress={runTimer} style={{alignSelf:'flex-start'}} >
+                                <Text style={{color:'#159AFF',marginLeft:width*0.02}}>Resend OTP</Text>
+                            </TouchableOpacity> 
+                        </View>
+                }
+
+                  <TouchableOpacity onPress={handleSubmit} style={{paddingHorizontal:height*0.1,backgroundColor:'#159AFF',width:width*0.9,alignSelf:'center',paddingVertical:height*0.02,marginTop:height*0.08,}}>
                       
                   {
                               eventReducer?.loading ? 

@@ -7,7 +7,7 @@ import Form2 from './Form2';
 import Form3 from './Form3';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { ChannelStackParams } from '../../../router/navigators/NavTypes';
+import { ChannelStackParams } from '../../../router/navigators/CreateChannelStackNav';
 
 
 type AppProps = {

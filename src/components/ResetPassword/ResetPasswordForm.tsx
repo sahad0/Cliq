@@ -7,7 +7,7 @@ import axios from 'axios'
 import { Keyboard } from 'react-native'
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { RootStackParams } from '../../router/router'
+import { AuthStackParams } from '../../router/navigators/AuthNav'
 
 
 type Values = {
@@ -30,8 +30,8 @@ type Success = 'success'|'failure'|'';
   const [focus,setFocus] = useState<focusBool>({focus1:false,focus2:false});
   const [success,setSuccess] = useState<Success>('');
   const [eventReducer,setEventReducer] = useReducer(requestStatus,initial_state);
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParams,'ForgotPassword'>>();
-  const {params:{user}} = useRoute<RouteProp<RootStackParams,'ResetPassword'>>();
+  const navigation = useNavigation<NativeStackNavigationProp<AuthStackParams,'ForgotPassword'>>();
+  const {params:{user}} = useRoute<RouteProp<AuthStackParams,'ResetPassword'>>();
     const initialValue:Values = {password:'',passwordConfirmation:''}
 
 

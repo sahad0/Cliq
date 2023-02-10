@@ -5,8 +5,8 @@ import requestStatus, { initial_state } from '../../utils/LoaderHandling'
 import { Formik, FormikProps, FormikValues } from 'formik'
 import { emailSchema } from '../../Extra/YupSchema/Schema'
 import { NavigationProp, useNavigation } from '@react-navigation/native'
-import { RootStackParams } from '../../router/router'
 import {  NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { AuthStackParams } from '../../router/navigators/AuthNav'
 
 type Props = {
     height:number,
@@ -26,7 +26,7 @@ interface Values {
 
   const [handleError,setHandleError] = useState<Error>(false);
 
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParams,'ForgotPassword'>>();
+  const navigation = useNavigation<NativeStackNavigationProp<AuthStackParams,'ForgotPassword'>>();
 
 
   const handleEmail = async(values:FormikValues):Promise<void>=>{

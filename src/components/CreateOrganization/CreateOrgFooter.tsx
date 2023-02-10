@@ -3,7 +3,7 @@ import React, { FC, useReducer } from 'react'
 import requestStatus, { initial_state } from '../../utils/LoaderHandling';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParams } from '../../router/router';
+import { NewUserStackParams } from '../../router/navigators/NewUserStackNav';
 
 type AppProps = {
     height: number,
@@ -13,7 +13,7 @@ type AppProps = {
 
 const CreateOrgFooter:FC<AppProps> = ({height,width}):JSX.Element => {
 
-    const navigation = useNavigation<NativeStackNavigationProp<RootStackParams,'CreateOrganization'>>();
+    const navigation = useNavigation<NativeStackNavigationProp<NewUserStackParams,'CreateOrganization'>>();
 
 
   return (

@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import { View, Text, SafeAreaView, StatusBar } from 'react-native'
+import { SafeAreaView, StatusBar } from 'react-native'
 import React from 'react'
 import Router from './src/router/router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -39,7 +39,7 @@ export type AppDispatch = typeof store.dispatch;4
 
 
 
-axios.defaults.baseURL = 'http://192.168.1.44:6969/api';
+axios.defaults.baseURL = 'https://prezz.live/api';
 
 
 

@@ -8,7 +8,7 @@ import { KeyboardAvoidingView } from 'react-native';
 import { useAppDispatch } from '../../Hooks/hooks';
 import { loginController } from '../../store/store';
 import { RouteProp, useRoute } from '@react-navigation/native';
-import { RootStackParams } from '../../router/router';
+import { AuthStackParams } from '../../router/navigators/AuthNav';
 
 
 type AppProps = { height: number,width:number,};
@@ -29,7 +29,7 @@ interface Values {
       const [error,setError] = useState<Error>({set:false,message:''});
       const dispatch = useAppDispatch();
 
-      const {params:{user}} = useRoute<RouteProp<RootStackParams,'OtpVerifySignUp'>>();
+      const {params:{user}} = useRoute<RouteProp<AuthStackParams,'OtpVerifySignUp'>>();
 
 
         const style = StyleSheet.create({

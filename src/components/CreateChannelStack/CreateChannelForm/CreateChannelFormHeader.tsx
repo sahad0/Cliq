@@ -4,7 +4,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import Antd from 'react-native-vector-icons/AntDesign'
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { ChannelStackParams } from '../../../router/navigators/NavTypes'
+import { ChannelStackParams } from '../../../router/navigators/CreateChannelStackNav'
 type AppProps = {
     height: number,
     width: number

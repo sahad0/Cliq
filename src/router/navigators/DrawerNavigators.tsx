@@ -1,13 +1,14 @@
-import { View, Text } from 'react-native'
-import React, { FC } from 'react'
+import React from 'react'
 import { createDrawerNavigator } from '@react-navigation/drawer'
-import TabNavigators from './TabNavigators';
 import DrawerContent from '../../Extra/DrawerContent';
-import { DrawerStackParams } from './NavTypes';
 import CreateChannelStackNav from './CreateChannelStackNav';
 
 
-
+export type DrawerStackParams ={
+  CreateChannelStackNav:undefined,
+  WidgetList:undefined,
+  ChatList:undefined,
+}
 
 const Drawer = createDrawerNavigator<DrawerStackParams>();
 

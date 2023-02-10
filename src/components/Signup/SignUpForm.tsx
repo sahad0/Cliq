@@ -6,7 +6,7 @@ import axios from 'axios';
 import requestStatus, { initial_state } from '../../utils/LoaderHandling';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParams } from '../../router/router';
+import { AuthStackParams } from '../../router/navigators/AuthNav';
 
 type AppProps = { height: number,width:number,};
 type PropsForm = {
@@ -25,7 +25,7 @@ type Error = false|true;
     }
     const [eventReducer,setEventReducer] = useReducer(requestStatus,initial_state);
     const [emailExist,setEmailExist] = useState<Error>(false);
-    const navigation = useNavigation<NativeStackNavigationProp<RootStackParams,'SignUp'>>();
+    const navigation = useNavigation<NativeStackNavigationProp<AuthStackParams,'SignUp'>>();
 
 
 
