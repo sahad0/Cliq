@@ -1,10 +1,12 @@
-import { View, Text, Image, Dimensions, Pressable } from 'react-native'
+import { View, Text, Image, Dimensions, Pressable, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { Switch } from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import OctIcon from 'react-native-vector-icons/Octicons';
 import Material from 'react-native-vector-icons/MaterialCommunityIcons';
 import Antd from 'react-native-vector-icons/AntDesign';
+import { useAppDispatch } from '../Hooks/hooks';
+import { logoutController } from '../store/store';
 
 
 type Switch=boolean;
@@ -16,6 +18,7 @@ export default function DrawerContent() {
     const [isSwitchOn, setIsSwitchOn] = React.useState<Switch>(false);
     const [logout, SetLogout] = React.useState<Switch>(false);
     const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
+    const dispatch = useAppDispatch();
   
 
   return (
@@ -41,10 +44,10 @@ export default function DrawerContent() {
             {
                 logout ? 
                 <>
-                     <View style={{flexDirection:'row',margin:height*0.03,alignItems:'center'}}>
+                     <TouchableOpacity onPress={()=>dispatch(logoutController())} style={{flexDirection:'row',margin:height*0.03,alignItems:'center'}}>
                         <Antd name='logout' size={22} color={'gray'} />
                         <Text style={{marginLeft:width*0.05,fontSize:height*0.019,color:'black'}}>Log Out</Text>
-                    </View>
+                    </TouchableOpacity>
                 </>
                 :
                 <>

@@ -1,4 +1,4 @@
-import { View, Text, Dimensions } from 'react-native'
+import { View, Text, Dimensions, Image } from 'react-native'
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Ionicon from 'react-native-vector-icons/Ionicons'
@@ -21,7 +21,7 @@ export default function TabNavigators():JSX.Element {
   const {height,width} = Dimensions.get('screen');
     
   return (
-    <Tab.Navigator  screenOptions={{headerShown:false,tabBarStyle:{height:height*0.08,elevation:3},headerTitleStyle:{margin:30} }}>
+    <Tab.Navigator  initialRouteName='ChatList' screenOptions={{headerShown:false,tabBarStyle:{height:height*0.08,elevation:3},headerTitleStyle:{margin:30} }}>
          
          <Tab.Screen name="WidgetList" component={WidgetList} options={{
             tabBarLabel: ({focused, color}) => (
@@ -31,7 +31,17 @@ export default function TabNavigators():JSX.Element {
             tabBarIcon: ({size,focused,color}) => {
               return (
                 <View style={{backgroundColor:'white'}}>
-                <Material name='widgets'style={{margin:1}} size={25} color={focused?'#5f5aad':'gray'} />
+                  {
+                    focused ?
+                     <>
+                      <Image source={require('../../assets/images/TabIcon/Widget.png')} style={{height:25,width:25}} resizeMode='contain' />
+                     </>
+                      : 
+                     <>
+                      <Image source={require('../../assets/images/TabIcon/Widget1.png')} style={{height:25,width:25}} resizeMode='contain' />
+                     
+                     </>
+                  }
                 </View>
               );
             },
@@ -45,7 +55,14 @@ export default function TabNavigators():JSX.Element {
             tabBarIcon: ({size,focused,color}) => {
               return (
                 <View style={{backgroundColor:'white'}}>
-                <Ionicon name='md-chatbubble-ellipses'style={{margin:1}} size={25} color={focused?'#5f5aad':'gray'} />
+                  {
+                    focused?
+                     <><Image source={require('../../assets/images/TabIcon/Chat.png')} style={{height:25,width:25}} resizeMode='contain' /></>
+                      : 
+                    <><Image source={require('../../assets/images/TabIcon/Chat1.png')} style={{height:25,width:25}} resizeMode='contain' /></>
+                  }
+                
+
                 </View>
               );
             },
@@ -59,8 +76,22 @@ export default function TabNavigators():JSX.Element {
             tabBarIcon: ({size,focused,color}) => {
               return (
                 <View style={{backgroundColor:'white'}}>
-                <Material name='stack-exchange'style={{margin:1}} size={25} color={focused?'#5f5aad':'gray'} />
+
+                  {
+                    focused ? 
+                    <>
+                     <Image source={require('../../assets/images/TabIcon/Channel.png')} style={{height:25,width:25}} resizeMode='contain' />
+
+                    </>
+                     :
+                    <>
+                   <Image source={require('../../assets/images/TabIcon/Channel1.png')} style={{height:25,width:25}} resizeMode='contain' />
+                    
+                    </>
+                  }
+                
                 </View>
+
               );
             },
           }} />

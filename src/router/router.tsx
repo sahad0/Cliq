@@ -11,9 +11,9 @@ export default function Router():JSX.Element {
 
 
 
-  const storeValue = useAppSelector((state)=>state.cart.value);
-  const auth = storeValue.token;
-  const newUser = storeValue.orgNewUser;
+  const {token,orgNewUser} = useAppSelector((state)=>state.cart.auth.value);
+  const auth = token;
+  const newUser = orgNewUser;
   axios.defaults.headers.common['Authorization'] = `Bearer ${auth}`;
 
 
@@ -27,7 +27,7 @@ export default function Router():JSX.Element {
       {
         !auth && (
           <AuthNav />
-        )
+         )
       }
       {
         auth && newUser && (
@@ -38,7 +38,7 @@ export default function Router():JSX.Element {
         auth && !newUser &&(
           <ExistingUserNav />
         )
-      }
+      }  
       
 
          

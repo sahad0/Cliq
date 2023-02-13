@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Touchable, TouchableOpacity, Image, Button, ActivityIndicator } from 'react-native'
+import { View, Text, TextInput, Touchable, TouchableOpacity, Image, Button, ActivityIndicator, Keyboard } from 'react-native'
 import React, { FC, useEffect, useReducer, useState } from 'react'
 import AuthAnimated from '../../Extra/AuthAnimated';
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
@@ -43,6 +43,7 @@ type checkMail = boolean;
 
   const checkEmailExist = async(values: FormikValues): Promise<void>=>{
     try {
+      Keyboard.dismiss();
       setEventReducer({type:'loading'});
       const check = await axios.post('/auth/check-email',values);
       if(check){

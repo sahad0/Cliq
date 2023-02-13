@@ -26,7 +26,7 @@ const CreateChannelMenuBody:FC<AppProps> = ({height,width}) => {
 
                 <View style={{height:0.5,backgroundColor:'lightgray',marginTop:height*0.03}} />
                 <TouchableOpacity onPress={()=>navigation.navigate('CreateChannelForm')}>
-                    <Text style={{color:'#5f5aad',fontSize:height*0.022,marginTop:height*0.02,alignSelf:'center'}}>Create Channel</Text>
+                    <Text style={{backgroundColor:'white',color:'#5f5aad',fontSize:height*0.022,marginTop:height*0.02,alignSelf:'center'}}>Create Channel</Text>
                 </TouchableOpacity>
 
             </View>

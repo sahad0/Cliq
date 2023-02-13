@@ -12,7 +12,7 @@ type AppProps = { height: number,width:number,};
 type PropsForm = {
     email:string,
     password:string,
-    phone:string,
+    phone:string, 
 }
 type Error = false|true;
 

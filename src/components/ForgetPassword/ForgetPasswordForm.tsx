@@ -4,7 +4,7 @@ import axios from 'axios'
 import requestStatus, { initial_state } from '../../utils/LoaderHandling'
 import { Formik, FormikProps, FormikValues } from 'formik'
 import { emailSchema } from '../../Extra/YupSchema/Schema'
-import { NavigationProp, useNavigation } from '@react-navigation/native'
+import {  useNavigation } from '@react-navigation/native'
 import {  NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { AuthStackParams } from '../../router/navigators/AuthNav'
 

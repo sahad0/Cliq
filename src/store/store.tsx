@@ -5,13 +5,13 @@ interface StoreValue extends UserType {
     token: string,
 }
 type UserType = {
-    orgNewUser: boolean,
+    orgNewUser: boolean|null,
 }
 
 
 const val:StoreValue = {
        token:"",
-       orgNewUser:false,
+       orgNewUser:null,
 }
 
 

@@ -44,10 +44,10 @@ const AuthNav = ():JSX.Element => {
   const Stack = createNativeStackNavigator<AuthStackParams>(); 
 
 
-  const storeValue = useAppSelector((state)=>state.cart.value);
+  const {token,orgNewUser} = useAppSelector((state)=>state.cart.auth.value);
 
-  const auth = storeValue.token;
-  const newUser = storeValue.orgNewUser;
+  const auth = token;
+  const newUser = orgNewUser;
 
   return (
 

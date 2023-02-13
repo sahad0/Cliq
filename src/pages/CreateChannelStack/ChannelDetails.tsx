@@ -8,7 +8,7 @@ export default function ChannelDetails():JSX.Element {
   const {width,height} = Dimensions.get('screen');
 
   return (
-    <SafeAreaView style={{flex:1}}>
+    <SafeAreaView style={{flex:1,backgroundColor:'white'}}>
         <StatusBar  barStyle={'default'} backgroundColor={'#5f5aad'} />
 
           <ChatListHeader height={height} width={width} />

@@ -1,8 +1,13 @@
 import { View, Text, Image, ScrollView, Pressable } from 'react-native'
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import IonIcons from 'react-native-vector-icons/Ionicons'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { Selected } from '../../../pages/CreateChannelStack/AddParticipants'
+import { useAppDispatch } from '../../../Hooks/hooks'
+import { participantsListController } from '../../../store/participantsStore'
+import { useNavigation } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { ChannelStackParams } from '../../../router/navigators/CreateChannelStackNav'
 
 type AppProps = {
 
@@ -13,11 +18,27 @@ type AppProps = {
 
 }
 
+export type ParticipantsListType = {
+    id:string,
+    name:string,
+}
+
 const AddParticipantsExt:FC<AppProps> = ({height,width,selected,removeId}):JSX.Element => {
+
+    const dispatch = useAppDispatch();
+    const navigation = useNavigation<NativeStackNavigationProp<ChannelStackParams,'AddParticipants'>>();
+
+
+
+    const removeKey = ()=>{
+        dispatch(participantsListController({participants_list:selected}));
+        navigation.navigate('CreateChannelForm');
+    }
+
 
   return (
 
-    <View style={{height:height*0.12,backgroundColor:'white',justifyContent:'center',flexDirection:'row'}}>
+    <View style={{height:height*0.12,backgroundColor:'white',justifyContent:'center',flexDirection:'row',borderTopRightRadius:height*0.01,borderTopLeftRadius:height*0.01,elevation:5,borderColor:'gray'}}>
     <ScrollView showsHorizontalScrollIndicator={false} horizontal style={{backgroundColor:'white',width:width*0.8}}>
         
        {
@@ -39,12 +60,12 @@ const AddParticipantsExt:FC<AppProps> = ({height,width,selected,removeId}):JSX.E
         
     </ScrollView>
     <View>
-        <TouchableOpacity style={{alignSelf:'center',height:height*0.2,width:width*0.2,marginTop:height*0.02}}>
-            <IonIcons name='arrow-forward-circle' color={'#5f5aad'} size={50} style={{alignSelf:'center'}} />
+        <TouchableOpacity onPress={removeKey} style={{alignSelf:'center',height:height*0.2,width:width*0.2,marginTop:height*0.02}}>
+            <IonIcons name='checkmark-circle-sharp' color={'#5f5aad'} size={50} style={{alignSelf:'center'}} />
         </TouchableOpacity>
     </View>
     </View>
   )
 }
 
-export default AddParticipantsExt
+export default AddParticipantsExt;

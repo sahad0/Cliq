@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function WidgetList() {
   return (
-    <View>
+    <View style={{backgroundColor:'white',flex:1}}>
       <Text>WidgetList</Text>
     </View>
   )
