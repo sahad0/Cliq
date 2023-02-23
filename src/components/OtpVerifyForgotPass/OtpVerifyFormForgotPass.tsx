@@ -24,20 +24,20 @@ type focusBool = true|false;
     const [error,setError] =  useState<focusBool>(false);
     const navigation = useNavigation<NativeStackNavigationProp<AuthStackParams,'OtpVerifyForgotPass'>>();
     const {params:{email}} = useRoute<RouteProp<AuthStackParams,'OtpVerifyForgotPass'>>();
-    const [showTimer,setShowTimer] = useState<focusBool>(false);
+    const [showTimer,setShowTimer] = useState<focusBool>(true);
     const [counter,setCounter] = useState<number>(59);
    
-    useEffect(()=>{
-        runTimer();
-    },[]);
+ 
 
-    useEffect(()=>{
-        console.log(counter);
+
+
+    useEffect(()=>{        
         if(counter<1){
-
             setShowTimer(false);
         }
-        else setTimeout(() => setCounter(counter - 1), 1000);
+        else {
+            setTimeout(() => setCounter(counter - 1), 1000);
+        }
     },[counter]);
 
     const handlePasswordChange = async(values:FormikValues):Promise<void>=>{
@@ -69,9 +69,9 @@ type focusBool = true|false;
 
     const runTimer  = async()=>{
         try{
-            const sentOtp = await axios.post('/auth/email-otp',{email:email});
-            setShowTimer(true);
             setCounter(59);
+            setShowTimer(true);
+            const sentOtp = await axios.post('/auth/email-otp',{email:email});
         }
         catch(err){
             console.log(err);

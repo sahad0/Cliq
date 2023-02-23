@@ -46,11 +46,10 @@ const RenderItem:FC<RenderType> = memo(({item,height,width,addId,selected}):JSX.
             <View style={{borderRadius:height*0.03,padding:height*0.00,flexDirection:'row',backgroundColor:'white',alignItems:'center'}}>
                 <View style={{marginLeft:height*0.021250}}>
                     <Image source={require('../../../assets/images/profile.png')} style={{height:height*0.060,width:height*0.060,}} />
-                    {/* <View style={{height:height*0.016,width:height*0.016,borderWidth:2,borderColor:'white',top:height*0.033,left:height*0.042,backgroundColor:'green',position:'absolute',borderRadius:height}} /> */}
                 </View> 
                 <View style={{marginLeft:width*0.03}}>
-                    <Text style={{color:'black'}} >{item.profile.first_name}</Text>
-                    <Text >{item.email}</Text>
+                    <Text style={{color:'black',fontSize:height*0.018}} >{item.profile.first_name}</Text>
+                    <Text style={{color:'gray',fontSize:height*0.015}}>{item.email}</Text>
                 </View>
 
             </View>
@@ -58,14 +57,12 @@ const RenderItem:FC<RenderType> = memo(({item,height,width,addId,selected}):JSX.
               
              {selected?.some(items =>  items.id===item.id) ?
              <>
-                {/* <CheckBox  isChecked={true} onPress={()=>{addId(item.id,item.name)}} /> */}
-                 <BouncyCheckbox disableBuiltInState isChecked={true} ref={(ref):any=>bouncyCheckboxRef=ref}  fillColor='#5f5aad' size={20} useNativeDriver={true} onPress={()=>{addId(item.id,item.profile.first_name)}} />
+                 <BouncyCheckbox disableBuiltInState isChecked={true} ref={(ref):any=>bouncyCheckboxRef=ref}  fillColor='#5f5aad' size={height*0.025} useNativeDriver={true} onPress={()=>{addId(item.id,item.profile.first_name)}} />
 
              </> :
              <>
-                {/* <CheckBox isChecked={false} onPress={()=>{addId(item.id,item.name)}} /> */}
 
-                 <BouncyCheckbox disableBuiltInState  isChecked={false} ref={(ref):any=>bouncyCheckboxRef=ref} fillColor='#5f5aad' size={20} useNativeDriver={true} onPress={()=>{addId(item.id,item.profile.first_name)}} />
+                 <BouncyCheckbox disableBuiltInState  isChecked={false} ref={(ref):any=>bouncyCheckboxRef=ref} fillColor='#5f5aad'  size={height*0.025} useNativeDriver={true} onPress={()=>{addId(item.id,item.profile.first_name)}} />
              
 
              </> }  

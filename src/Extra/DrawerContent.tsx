@@ -31,7 +31,7 @@ export default function DrawerContent() {
                     <Text style={{color:'gray',fontSize:height*0.014}}>sahadwg@gmail.com</Text>
                 </View>
                 <Pressable onPress={()=>SetLogout(!logout)}>
-                <Material name={logout?'arrow-up-drop-circle':'arrow-down-drop-circle'} size={27} color={'gray'} />
+                <Material name={logout?'arrow-up-drop-circle':'arrow-down-drop-circle'}  size={height*0.028} color={'gray'} />
                 </Pressable>
 
             </View>

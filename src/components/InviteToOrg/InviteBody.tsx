@@ -1,8 +1,9 @@
-import { View, Text, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, ToastAndroid } from 'react-native'
 import React, { FC, useState } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { ChannelStackParams } from '../../router/navigators/CreateChannelStackNav';
+import Toast from 'react-native-simple-toast';
 import axios from 'axios';
 
 type AppProps = {
@@ -31,7 +32,14 @@ const InviteBody:FC<AppProps> = ({height,width}):JSX.Element => {
             if(defaultOrg){
                 const sendInvite = await axios('/organization/invite',{method:"POST",data:{organization_id:defaultOrg,invitations:[{email:email}]}});
             }
-            navigation.navigate('ChatList');
+            ToastAndroid.showWithGravityAndOffset(
+              'Invite Successful!',
+              ToastAndroid.LONG,
+              ToastAndroid.BOTTOM,
+              25,
+              50,
+            );
+            navigation.navigate('TabNavigators');
         }catch(err:any){
             console.log(err.request.responseText);
         }
@@ -40,10 +48,10 @@ const InviteBody:FC<AppProps> = ({height,width}):JSX.Element => {
   return (
     <View style={{flex:1,backgroundColor:'white'}}>
       <View style={{alignItems:'center',flexDirection:'row',width:width*0.96,alignSelf:'center',borderColor:focused?'#5f5aad':'lightgray',elevation:1,height:height*0.075,marginTop:height*0.02,borderWidth:0.2,backgroundColor:'white',borderRadius:height*0.05}}>
-            <TextInput onChangeText={(e)=>setEmail(e)} value={email} onFocus={()=>setFocused(true)} onBlur={()=>setFocused(false)} cursorColor={'#5f5aad'} placeholder='Enter email address to invite' placeholderTextColor='gray' style={{marginLeft:width*0.08,width:width*0.6,color:'black',margin:height*0.01,fontSize:height*0.018}} />
+            <TextInput onChangeText={(e)=>setEmail(e)} value={email} onFocus={()=>setFocused(true)} onBlur={()=>setFocused(false)} cursorColor={'#5f5aad'} placeholder='Enter email address to invite' placeholderTextColor='gray' style={{marginLeft:width*0.085,width:width*0.6,color:'black',margin:height*0.01,fontSize:height*0.018}} />
             <View style={{alignItems:'center',justifyContent:'center',backgroundColor:'white',height:height*0.05,flex:1,margin:height*0.01,borderRadius:height*0.008,marginRight:height*0.02}}>
                <TouchableOpacity onPress={sendInvite} style={{alignSelf:'center'}}>
-                    <Text style={{color:'#5f5aad'}}>INVITE</Text>
+                    <Text style={{color:'#5f5aad',fontSize:height*0.018}}>INVITE</Text>
                 </TouchableOpacity>
             </View>
       </View>

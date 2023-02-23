@@ -33,7 +33,7 @@ const CreateChannelFormBody:FC<AppProps> = ({height,width,organizationId}):JSX.E
     const [Visibility,setVisibility] = useState<VisibilityState>(true);
     const navigation = useNavigation<NativeStackNavigationProp<ChannelStackParams,'CreateChannelForm'>>();
     
-    const {type,visibility,participants_list} = useAppSelector((state)=>state.cart.channelParticipant.value);
+    const {type,visibility,participants_list,} = useAppSelector((state)=>state.cart.channelParticipant.value);
     const dispatch = useAppDispatch();
 
 
@@ -51,28 +51,27 @@ const CreateChannelFormBody:FC<AppProps> = ({height,width,organizationId}):JSX.E
 
   return (
     <ScrollView style={{flex:1,marginTop:height*0.085,}}>
-    <View style={{height:height*0.23,borderRadius:height*0.01,backgroundColor:'white',margin:height*0.02,marginTop:height*0.018,elevation:3}}>
       
         <Form1 height={height} width={width} focus={focus} setFocus={setFocus} />
-    </View>
 
 
+        <View style={{borderRadius:height*0.01,backgroundColor:'white',margin:height*0.02,elevation:3,marginTop:0,justifyContent:'center'}}>
 
-    <View style={{height:height*0.18,borderRadius:height*0.01,backgroundColor:'white',margin:height*0.02,elevation:3,marginTop:0,justifyContent:'center'}}>
         <Form2 height={height} width={width} stateType={stateType} setStateType={setStateType} />
-    </View>
-    
+
+        </View>
+
     {
         stateType==='PUBLIC' &&(
-            <View style={{height:height*0.25,borderRadius:height*0.01,backgroundColor:'white',margin:height*0.02,elevation:3,marginTop:0,justifyContent:'center'}}>
+            <View style={{borderRadius:height*0.01,backgroundColor:'white',margin:height*0.02,elevation:3,marginTop:0,justifyContent:'center'}}>
                 <Form3 height={height} width={width} visibility={Visibility} setVisibility={setVisibility} />
             </View>
         )
     }
     <View style={{height:participants_list.length>0? height*0.18 : height*0.07,backgroundColor:'white',borderRadius:height*0.01,margin:height*0.02,elevation:2,marginTop:0}}>
         <TouchableOpacity onPress={()=>navigation.navigate('AddParticipants',{organization_id:organizationId})} style={{height:height*0.07,flexDirection:'row',borderRadius:height*0.01,backgroundColor:'white',alignItems:'center',justifyContent:'space-between',}}>
-            <Text style={{color:'black',marginLeft:width*0.08,fontSize:height*0.017}}>Add Participants</Text>
-            <Ionicons name='person-add' color={'#5f5aad'} size={22} style={{marginRight:width*0.08}} />
+            <Text style={{color:'black',marginLeft:width*0.04,fontSize:height*0.018}}>Add Participants</Text>
+            <Ionicons name='person-add' color={'#5f5aad'} size={height*0.026} style={{marginRight:width*0.08}} />
 
         </TouchableOpacity>
         <ScrollView showsHorizontalScrollIndicator={false} horizontal style={{borderRadius:height*0.01,backgroundColor:'white'}}>
@@ -82,14 +81,14 @@ const CreateChannelFormBody:FC<AppProps> = ({height,width,organizationId}):JSX.E
              
              return(
              
-             <Pressable onPress={()=>dispatch(filterParticipants({id:k.id}))}  key={i} style={{alignSelf:'center',margin:height*0.03,marginRight:0,width:width*0.15,marginLeft:height*0.018,marginBottom:height*0.05}}>
+             <Pressable onPress={()=>dispatch(filterParticipants({id:k.id}))}  key={i} style={{alignItems:'center',justifyContent:'center',marginTop:height*0.035,margin:height*0.027,marginRight:0,marginLeft:width*0.035,marginBottom:height*0.05}}>
                  <View>
                      <Image source={require('../../../assets/images/profile.png')} style={{height:height*0.055,width:height*0.055,}} />
                      <View style={{top:height*0.035,borderColor:'white',borderWidth:1.5,left:height*0.039,height:height*0.018,width:height*0.018,borderRadius:height,backgroundColor:'lightgray',position:'absolute'}} >
                          <Text style={{fontSize:height*0.009,color:'white',alignSelf:'center'}}>x</Text>
                      </View>
                  </View>
-                 <Text numberOfLines={1} ellipsizeMode='tail' style={{color:'black'}}>{k.name}</Text>
+                 <Text numberOfLines={1} ellipsizeMode='tail' style={{color:'black',alignSelf:'center'}}>{k.name}</Text>
              </Pressable>
          )})
         }

@@ -7,6 +7,8 @@ export default function ChatList():JSX.Element {
 
     const {height,width} = Dimensions.get('screen');
 
+
+
   return (
     <SafeAreaView style={{flex:1,backgroundColor:'white'}}>
 

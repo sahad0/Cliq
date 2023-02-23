@@ -18,7 +18,7 @@ const InviteBtn:FC<AppProps> = ({height,width}) => {
   return (
     <View style={{position:'absolute',bottom:0,right:0,margin:height*0.03,marginBottom:height*0.05,height:height*0.075,borderColor:'white',elevation:3,width:height*0.075,borderRadius:height,backgroundColor:'#5f5aad',alignItems:'center',justifyContent:'center'}}>
       <TouchableOpacity onPress={()=>navigation.navigate('InviteToOrg')}>
-        <MatIcons name='person-add' size={23} color={'white'} />
+        <MatIcons name='person-add' size={height*0.028} color={'white'} />
       </TouchableOpacity>
     </View>
   )

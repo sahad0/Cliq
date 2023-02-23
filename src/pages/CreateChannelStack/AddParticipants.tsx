@@ -7,6 +7,7 @@ import { clockRunning } from 'react-native-reanimated';
 import axios from 'axios';
 import { useNavigation,RouteProp, useRoute } from '@react-navigation/native';
 import { ChannelStackParams } from '../../router/navigators/CreateChannelStackNav';
+import { useAppSelector } from '../../Hooks/hooks';
 
 export type Selected = {
   id: string,
@@ -27,6 +28,10 @@ const [members,setMembers] = useState<ItemProps[]>([]);
 
 const {params:{organization_id}} = useRoute<RouteProp<ChannelStackParams,'AddParticipants'>>();
 
+const {profile} = useAppSelector((state)=>state.cart.auth.value);
+const {participants_list} = useAppSelector((state)=>state.cart.channelParticipant.value);
+
+
 
 useEffect(()=>{
   fetchMembers();
@@ -35,8 +40,9 @@ useEffect(()=>{
 
 const fetchMembers = async () => {
   try{
-    if(organization_id){
-      const {members} = (await axios('/organization/members',{method:'POST',timeout:5000,data:{organization_id:organization_id,excludeMembers:[]}})).data;
+    if(organization_id && profile!==null){
+      const {members} = (await axios('/organization/members',{method:'POST',timeout:5000,data:{organization_id:organization_id,excludeMembers:[profile._id]}})).data;
+     console.log(members)
       setMembers(members);
       
 

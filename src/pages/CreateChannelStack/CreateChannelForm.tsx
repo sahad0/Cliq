@@ -27,7 +27,6 @@ export default function CreateChannelForm():JSX.Element {
   }
 
 
-
   return (
     <SafeAreaView style={{flex:1,backgroundColor:'white'}}>
         <CreateChannelFormHeader height={height} width={width} />

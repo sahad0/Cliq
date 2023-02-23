@@ -2,7 +2,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { ParticipantsListType } from "../components/CreateChannelStack/AddParticiapants/AddParticipantsExt";
 
-interface StoreValue extends Name,Description,Visibility,Type,Participants_list  {
+interface StoreValue extends Name,Description,Visibility,Type,Participants_list,Img  {
    
 }
 type Name = {
@@ -17,6 +17,16 @@ type Visibility = {
 type Type = {
     type: "PUBLIC" | "PRIVATE",
 };
+export type Img = {
+    assets:{
+        filename?:string,
+        fileSize?:number,
+        height?:number,
+        type?:string,
+        uri?:string,
+        width?:number,
+    }
+}
 type Participants_list = {
     participants_list: ParticipantsListType[],
 };
@@ -29,7 +39,8 @@ const val:StoreValue = {
     description: "",
     visibility: true,
     type: "PUBLIC",
-    participants_list: []
+    participants_list: [],
+    assets:{}
 }
 
 
@@ -69,19 +80,25 @@ const participantSlice = createSlice({
             const {id} = action.payload;
             state.value.participants_list = state.value.participants_list.filter((k)=> k.id !== id);
         },
+        assetController : (state,action:PayloadAction<Img>)=>{
+            const {assets} = action.payload;
+            state.value.assets = assets;
+
+        },
         clearParticipantsController : (state) =>{
             state.value = {
                 name: "",
                 description: "",
                 visibility: true,
                 type: "PUBLIC",
-                participants_list: []
+                participants_list: [],
+                assets:{}
             }
         }
 
     }
 })
 
-export const {titleController,descriptionController,visibilityController,typeController,participantsListController,filterParticipants,clearParticipantsController} = participantSlice.actions;
+export const {titleController,descriptionController,visibilityController,typeController,assetController,participantsListController,filterParticipants,clearParticipantsController} = participantSlice.actions;
 
 export default participantSlice.reducer;

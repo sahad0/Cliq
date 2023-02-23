@@ -50,7 +50,8 @@ const AuthAnimated:FC<Props> = ({height,width,inputStr,btnStr,user,setUser}:Prop
       try {
         Keyboard.dismiss();
         setEventReducer({type:'loading'});
-        const {data} = await axios.post('/auth/login',user);
+        const {data} = await axios('/auth/login',{method:'POST',data:user});
+        console.log(data);
         setInValidCred(false);
         
         if(data){
@@ -67,7 +68,7 @@ const AuthAnimated:FC<Props> = ({height,width,inputStr,btnStr,user,setUser}:Prop
             if(data1){
               const {organizations} = data1.data;
               const orgNewUser = organizations.length>0 ? false:true
-              dispatch(loginController({token:data.token,orgNewUser:orgNewUser}));
+              dispatch(loginController({token:data.token,orgNewUser:orgNewUser,profile:null}));
               setEventReducer({type:'success'});
             }
         }
@@ -76,11 +77,8 @@ const AuthAnimated:FC<Props> = ({height,width,inputStr,btnStr,user,setUser}:Prop
 
         }
       } catch (err:any) {
-        if (err.response.status===400) {
           setEventReducer({type:'error'});
-
-          err.response.status===400 ? setInValidCred(true):null;
-        }
+          setInValidCred(true);
       }
     }
 

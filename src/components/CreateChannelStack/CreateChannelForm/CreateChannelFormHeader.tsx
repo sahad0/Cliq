@@ -16,10 +16,10 @@ const CreateChannelFormHeader:FC<AppProps> = ({height,width}) => {
     const navigation = useNavigation<NativeStackNavigationProp<ChannelStackParams>>();
 
   return (
-    <View style={{position:'absolute',width:width,height:height*0.13,backgroundColor:'#5f5aad',flexDirection:'row',alignItems:'center'}}>
+    <View style={{position:'absolute',width:width,height:height*0.08,backgroundColor:'#5f5aad',flexDirection:'row',alignItems:'center'}}>
        <StatusBar  barStyle={'default'} backgroundColor={'#5f5aad'} />
         <TouchableOpacity onPress={()=>navigation.navigate('CreateChannelMenu')}>
-            <Antd name='arrowleft' color={'white'} size={25}  style={{marginLeft:width*0.06}}/>
+            <Antd name='arrowleft' color={'white'} size={height*0.03}  style={{marginLeft:width*0.06}}/>
         </TouchableOpacity>
         
         <Text style={{color:'white',fontSize:height*0.023,marginLeft:width*0.07}}>Create a channel</Text>
