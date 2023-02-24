@@ -83,12 +83,12 @@ const Form1:FC<AppProps> = ({height,width,focus,setFocus}) => {
     
     <View style={{flexDirection:'row',width:width*0.7}}>
 
-      <View style={{width:'30%'}}>
-        <TouchableOpacity onPress={pickImage} style={{height:height*0.1,width:height*0.1,borderRadius:height,borderColor:'gray',elevation:3,backgroundColor:'white',alignItems:'center',justifyContent:'center'}}>
+      <View style={{width:'30%',margin:height*0.02,marginLeft:0,marginTop:0}}>
+        <TouchableOpacity onPress={pickImage} style={{height:height*0.11,width:height*0.11,borderRadius:height,borderColor:'gray',elevation:3,backgroundColor:'white',alignItems:'center',justifyContent:'center'}}>
         {
                 assets && assets.uri  ? 
                 <>
-                    <Image source={{uri:assets.uri}} style={{height:height*0.1,width:height*0.1,borderRadius:height}}  resizeMode='cover' />
+                    <Image source={{uri:assets.uri}} style={{height:height*0.11,width:height*0.11,borderRadius:height}}  resizeMode='cover' />
                 </>
                 :
                 <>
@@ -98,40 +98,18 @@ const Form1:FC<AppProps> = ({height,width,focus,setFocus}) => {
         </TouchableOpacity>
 
       </View>
-      <View style={{width:'70%',marginLeft:width*0.045}}>
+      <View style={{width:'70%',marginLeft:width*0.05}}>
           <Text style={{color:focus.input1?'#5f5aad':'gray',fontSize:height*0.019,width:'100%'}}>Title</Text>
-          <TextInput value={name} onFocus={()=>setFocus({...focus,input1:true})} onBlur={(e)=>setFocus({...focus,input1:false})} onChangeText={(e)=>{dispatch(titleController({name:e}))}} style={{width:'91%',borderBottomColor: focus.input1? '#5f5aad':'gray',borderBottomWidth:1,fontSize:height*0.02}} />
+          <TextInput value={name} onFocus={()=>setFocus({...focus,input1:true})} onBlur={(e)=>setFocus({...focus,input1:false})} onChangeText={(e)=>{dispatch(titleController({name:e}))}} style={{height:height*0.053,width:'91%',borderBottomColor: focus.input1? '#5f5aad':'gray',borderBottomWidth:1,fontSize:height*0.018}} />
       </View>
 
 
-      {/* <View style={{flexDirection:'row'}}>
-        <View>
-             <TouchableOpacity onPress={pickImage} style={{height:height*0.1,width:height*0.1,borderRadius:height,backgroundColor:'white',elevation:2}}>
-            {
-                assets && assets.uri  ? 
-                <>
-                    <Image source={{uri:assets.uri}} style={{height:height*0.1,width:height*0.1,borderRadius:height}}  resizeMode='cover' />
-                </>
-                :
-                <>
-                <Material style={{alignSelf:'center'}} name='camera' color='lightgray' />
-                </>
-            }
-            </TouchableOpacity> 
-        </View>
-
-        <View style={{width:"100%"}}>
-          <Text style={{color:focus.input1?'#5f5aad':'gray',fontSize:height*0.019,width:'100%'}}>Title</Text>
-          <TextInput  value={name} onFocus={()=>setFocus({...focus,input1:true})} onBlur={(e)=>setFocus({...focus,input1:false})} onChangeText={(e)=>{dispatch(titleController({name:e}))}} style={{borderBottomColor: focus.input1? '#5f5aad':'gray',width:'100%',borderBottomWidth:1,fontSize:height*0.02}} />
-        </View>
-        </View> */}
-
     </View>
 
-        <View style={{width:width*0.7,marginTop:width*0.005,}} >
-          <Text style={{color:focus.input2?'#5f5aad':'gray',fontSize:height*0.019,marginTop:width*0.03}}>Description</Text>
+        <View style={{width:width*0.75,marginTop:width*0.005,}} >
+          <Text style={{color:focus.input2?'#5f5aad':'gray',fontSize:height*0.019,}}>Description</Text>
 
-          <TextInput value={description} onFocus={()=>setFocus({...focus,input2:true})} onBlur={()=>setFocus({...focus,input2:false})} onChangeText={(e)=>{dispatch(descriptionController({description:e}))}} style={{borderBottomColor:focus.input2? '#5f5aad':'gray',width:'100%',borderBottomWidth:1,fontSize:height*0.018}} />
+          <TextInput value={description} onFocus={()=>setFocus({...focus,input2:true})} onBlur={()=>setFocus({...focus,input2:false})} onChangeText={(e)=>{dispatch(descriptionController({description:e}))}} style={{height:height*0.053,borderBottomColor:focus.input2? '#5f5aad':'gray',width:'100%',borderBottomWidth:1,fontSize:height*0.018}} />
 
         </View>
       </View>

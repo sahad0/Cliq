@@ -65,7 +65,7 @@ const NameOrgBody:FC<AppProps> = ({height,width}):JSX.Element => {
             {({ handleChange, handleSubmit,values ,errors }:FormikProps<FormikValues>) => (
               
                 <>
-                  <TextInput placeholderTextColor={'gray'}  onChangeText={handleChange('orgName')} value={values.orgName} onFocus={()=>setFocus(true)}  onBlur={()=>{setFocus(false)}}  style={{color:'black',fontFamily:'ZohoRegular',width:width*0.9,alignSelf:'center',borderBottomColor:focus ? '#159AFF': 'lightgray',borderBottomWidth:1}} />
+                  <TextInput placeholderTextColor={'gray'}  onChangeText={handleChange('orgName')} value={values.orgName} onFocus={()=>setFocus(true)}  onBlur={()=>{setFocus(false)}}  style={{color:'black',fontFamily:'ZohoRegular',width:width*0.9,alignSelf:'center',borderBottomColor:focus ? '#159AFF': 'lightgray',borderBottomWidth:1,fontSize:height*0.018}} />
                   <Text style={{marginTop:height*0.03,marginLeft:width*0.03,color:errors.orgName?'red':'lightgray',textAlign:'right',marginRight:width*0.05}}>Min. 4-Max.30 characters</Text>
                 
             <Text style={{color:'#3B99FD',marginLeft:width*0.03,fontSize:height*0.016,marginTop:height*0.04}}>While a verified user tries to join Zoho Cliq,</Text>
@@ -80,7 +80,7 @@ const NameOrgBody:FC<AppProps> = ({height,width}):JSX.Element => {
                      {
                       eventReducer?.loading ? 
                       <>
-                        <ActivityIndicator size={'small'} color={'#FFFFFF'} />
+                        <ActivityIndicator size={height*0.026} color={'#FFFFFF'} />
                       </>
                       :
                       <>

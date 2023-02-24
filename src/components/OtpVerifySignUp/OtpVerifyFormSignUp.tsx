@@ -48,7 +48,7 @@ interface Values {
                 const {data}=  await axios.post('/auth/register',val);
                 if(data){
                   setError({set:false,message:''})
-                  dispatch(loginController({token:data.token,orgNewUser:true}));
+                  dispatch(loginController({token:data.token,orgNewUser:true,profile:null}));
                 }
               
                 setEventReducer({type:'success'});
@@ -93,7 +93,7 @@ interface Values {
             <Formik validateOnBlur={false} validateOnChange={false} validationSchema={otpSchema} initialValues={{otp:''}} onSubmit={SignUpfn}>
                 
                 {({ handleChange, handleBlur, handleSubmit,values ,errors}:FormikProps<Values>):JSX.Element => (<>
-                  <TextInput keyboardType='phone-pad' placeholder='OTP *' placeholderTextColor={'gray'} maxLength={6} onChangeText={handleChange('otp')} value={values.otp} style={[style.inputField,{marginTop:height*0.04,color:'gray'}]} />
+                  <TextInput keyboardType='phone-pad' placeholder='OTP *' placeholderTextColor={'gray'} maxLength={6} onChangeText={handleChange('otp')} value={values.otp} style={[style.inputField,{marginTop:height*0.04,color:'gray',fontSize:height*0.018}]} />
 
                 {errors.otp && (
                 <Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>
@@ -110,11 +110,11 @@ interface Values {
                       <Text style={{fontFamily:'ZohoBold',color:'black',fontSize:height*0.017,marginTop:height*0.03,textDecorationLine:'underline',marginLeft:width*0.05,}}>Resend OTP</Text>
 
 
-                      <TouchableOpacity onPress={handleSubmit} style={{paddingHorizontal:height*0.1,backgroundColor:'#f0483e',width:width*0.9,alignSelf:'center',paddingVertical:height*0.02,marginTop:height*0.06}}>
+                      <TouchableOpacity onPress={handleSubmit} style={{borderRadius:height*0.008,paddingHorizontal:height*0.1,backgroundColor:'#f0483e',width:width*0.9,alignSelf:'center',paddingVertical:height*0.02,marginTop:height*0.06}}>
                       {
                                     eventReducer?.loading ? 
                                     <>
-                                      <ActivityIndicator size={'small'} color={'#FFFFFF'} />
+                                      <ActivityIndicator size={height*0.026} color={'#FFFFFF'} />
                                     </>
                                     :
                                     <>

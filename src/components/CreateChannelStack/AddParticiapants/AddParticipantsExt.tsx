@@ -46,10 +46,10 @@ const AddParticipantsExt:FC<AppProps> = ({height,width,selected,removeId}):JSX.E
             
             return(
             
-            <Pressable onPress={()=>removeId(k.id)} key={i} style={{alignSelf:'center',margin:height*0.02,marginRight:0,width:width*0.15}}>
-                <View>
+            <Pressable onPress={()=>removeId(k.id)} key={i} style={{alignSelf:'center',margin:width*0.01,marginLeft:width*0.04,marginRight:0,alignItems:'center',justifyContent:'center'}}>
+                <View >
                     <Image source={require('../../../assets/images/profile.png')} style={{height:height*0.055,width:height*0.055,}} />
-                    <View style={{top:height*0.035,borderColor:'white',borderWidth:1.5,left:height*0.039,height:height*0.018,width:height*0.018,borderRadius:height,backgroundColor:'lightgray',position:'absolute'}} >
+                    <View style={{top:height*0.035,borderColor:'white',borderWidth:1.5,height:height*0.018,width:height*0.018,borderRadius:height,backgroundColor:'lightgray',position:'absolute'}} >
                         <Text style={{fontSize:height*0.009,color:'white',alignSelf:'center'}}>x</Text>
                     </View>
                 </View>
@@ -61,7 +61,7 @@ const AddParticipantsExt:FC<AppProps> = ({height,width,selected,removeId}):JSX.E
     </ScrollView>
     <View>
         <TouchableOpacity onPress={removeKey} style={{alignSelf:'center',height:height*0.2,width:width*0.2,marginTop:height*0.02}}>
-            <IonIcons name='checkmark-circle-sharp' color={'#5f5aad'} size={50} style={{alignSelf:'center'}} />
+            <IonIcons name='checkmark-circle-sharp' color={'#5f5aad'} size={height*0.045} style={{alignSelf:'center'}} />
         </TouchableOpacity>
     </View>
     </View>

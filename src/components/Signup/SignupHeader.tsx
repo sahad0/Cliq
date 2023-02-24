@@ -16,9 +16,9 @@ type AppProps = { height: number,width:number,};
         <View  style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
             <Image source={require('../../assets/images/zoho.png')}  style={{height:height*0.11,width:height*0.11,marginTop:0}} resizeMode={'contain'}  />
             <View style={{flexDirection:'row',margin:height*0.018,marginBottom:0,marginTop:0}}>
-                <Text style={{fontFamily:'ZohoRegular'}}>Have a Zoho Account ? </Text>
+                <Text style={{fontFamily:'ZohoRegular',color:'gray',fontSize:height*0.018}}>Have a Zoho Account ? </Text>
                 <TouchableOpacity onPress={()=>navigation.navigate('Login')}>
-                <Text style={{color:'red',fontFamily:'ZohoRegular'}}>SIGN IN</Text>
+                <Text style={{color:'red',fontFamily:'ZohoRegular',fontSize:height*0.018}}>SIGN IN</Text>
                 </TouchableOpacity>
             </View>
         </View>

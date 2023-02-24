@@ -104,7 +104,7 @@ const AuthAnimated:FC<Props> = ({height,width,inputStr,btnStr,user,setUser}:Prop
             
             {({ handleChange, handleBlur, handleSubmit, values, errors }:FormikProps<FormikValues>) => (
               <>
-                <TextInput placeholderTextColor={'gray'} onChangeText={handleChange('password')} value={values.email} onBlur={()=>{handleBlur('password'),setFocus(false)}} secureTextEntry={true} onFocus={()=>setFocus(true)}  placeholder={inputStr} style={{color:'gray',fontFamily:'ZohoRegular',width:width*0.9,alignSelf:'center',borderBottomColor:focus ? '#159AFF': 'lightgray',borderBottomWidth:1}} />
+                <TextInput placeholderTextColor={'gray'} onChangeText={handleChange('password')} value={values.email} onBlur={()=>{handleBlur('password'),setFocus(false)}} secureTextEntry={true} onFocus={()=>setFocus(true)}  placeholder={inputStr} style={{color:'gray',fontFamily:'ZohoRegular',width:width*0.9,alignSelf:'center',borderBottomColor:focus ? '#159AFF': 'lightgray',borderBottomWidth:1,fontSize:height*0.018}} />
                 {inValidCred?
                     <>
                       <Text style={{color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>Incorrect password. Please try again.</Text>
@@ -118,15 +118,15 @@ const AuthAnimated:FC<Props> = ({height,width,inputStr,btnStr,user,setUser}:Prop
                     {errors.password.toString()}
                     </Text></>}
                 
-                <TouchableOpacity onPress={handleSubmit} style={{paddingHorizontal:height*0.1,backgroundColor:'#159AFF',width:width*0.9,alignSelf:'center',paddingVertical:height*0.02,marginTop:height*0.1}}>
+                <TouchableOpacity onPress={handleSubmit} style={{paddingHorizontal:height*0.1,backgroundColor:'#159AFF',width:width*0.9,alignSelf:'center',paddingVertical:height*0.02,marginTop:height*0.1,borderRadius:height*0.008}}>
                       {
                       eventReducer?.loading ? 
                       <>
-                        <ActivityIndicator size={'small'} color={'#FFFFFF'} />
+                        <ActivityIndicator size={height*0.026} color={'#FFFFFF'} />
                       </>
                       :
                       <>
-                      <Text style={{color:'white',alignSelf:'center',fontFamily:'ZohoRegular'}}>{btnStr}</Text>
+                      <Text style={{color:'white',alignSelf:'center',fontFamily:'ZohoRegular',fontSize:height*0.018}}>{btnStr}</Text>
                       </>
                      }
                 </TouchableOpacity>

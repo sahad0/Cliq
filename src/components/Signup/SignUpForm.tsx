@@ -74,7 +74,7 @@ type Error = false|true;
 
 
   return (
-    <>
+    <View>
      <View style={{flexDirection:'row',alignItems:'center',paddingTop:height*0.03}}>
               <Image source={require('../../assets/images/cliq.png') } resizeMode='contain' style={{height:height*0.1,width:height*0.1}} />
               <Text style={{fontFamily:'ZohoBold',color:'black',fontSize:height*0.025}}>Cliq</Text>
@@ -90,31 +90,31 @@ type Error = false|true;
         
         <View style={{marginTop:height*0.02}}>   
 
-            <TextInput placeholderTextColor={'gray'} onChangeText={handleChange('email')} value={values.email} placeholder='Email*' style={[style.inputField,{color:'gray',marginTop:height*0.04,}]} />
-            {(errors.email) &&  <><Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.01,marginLeft:height*0.025,marginBottom:0}}>
+            <TextInput placeholderTextColor={'gray'} onChangeText={handleChange('email')} value={values.email} placeholder='Email*' style={[style.inputField,{color:'gray',marginTop:height*0.04,fontSize:height*0.018}]} />
+            {(errors.email) &&  <><Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.01,marginLeft:height*0.03,marginBottom:0}}>
                     {errors.email.toString()}
                   </Text></>}
-            {emailExist && (<><Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.01,marginLeft:height*0.025,marginBottom:0}}>{'Email aldready Exist!'}</Text></>)}
-            <TextInput secureTextEntry={true} placeholderTextColor={'gray'} onChangeText={handleChange('password')} value={values.password} placeholder='Password*' style={[style.inputField,{color:'gray',marginTop:height*0.02}]} />
-            {(errors.password) &&  <><Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.01,marginLeft:height*0.025,marginBottom:0}}>
+            {emailExist && (<><Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.01,marginLeft:height*0.03,marginBottom:0}}>{'Email aldready Exist!'}</Text></>)}
+            <TextInput secureTextEntry={true} placeholderTextColor={'gray'} onChangeText={handleChange('password')} value={values.password} placeholder='Password*' style={[style.inputField,{color:'gray',marginTop:height*0.02,fontSize:height*0.018}]} />
+            {(errors.password) &&  <><Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.01,marginLeft:height*0.03,marginBottom:0}}>
                     {errors.password.toString()}
                   </Text></>}
             <View style={{marginTop:height*0.02,flexDirection:'row',alignSelf:'center'}}>
 
-                <TextInput placeholderTextColor={'gray'} editable={false} placeholder='+91' style={[{ color:'gray',borderColor:'black',borderWidth:1,width:width*0.2,alignSelf:'center',paddingLeft:width*0.04,borderRightWidth:0}]} />
-                <TextInput placeholderTextColor={'gray'} keyboardType='number-pad' onChangeText={handleChange('phone')} value={values.phone} placeholder='Phone Number*' style={[{ color:'gray',borderColor:'black',borderWidth:1,width:width*0.7,alignSelf:'center',paddingLeft:width*0.04}]} />
+                <TextInput placeholderTextColor={'gray'} editable={false} placeholder='+91' style={[{ color:'gray',borderColor:'black',borderWidth:1,width:width*0.2,alignSelf:'center',paddingLeft:width*0.04,borderRightWidth:0,fontSize:height*0.018}]} />
+                <TextInput placeholderTextColor={'gray'} keyboardType='number-pad' onChangeText={handleChange('phone')} value={values.phone} placeholder='Phone Number*' style={[{ color:'gray',borderColor:'black',borderWidth:1,width:width*0.7,alignSelf:'center',paddingLeft:width*0.04,fontSize:height*0.018}]} />
                
             </View>
-            {(errors.phone) &&  <><Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.01,marginLeft:height*0.025,marginBottom:0}}>
+            {(errors.phone) &&  <><Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.01,marginLeft:height*0.03,marginBottom:0}}>
                     {errors.phone.toString()}
                   </Text></>}
         </View>
         
-        <TouchableOpacity onPress={handleSubmit} style={{paddingHorizontal:height*0.1,backgroundColor:'#f0483e',width:width*0.9,alignSelf:'center',paddingVertical:height*0.02,marginTop:height*0.06}}>
+        <TouchableOpacity onPress={handleSubmit} style={{borderRadius:height*0.003,paddingHorizontal:height*0.1,backgroundColor:'#f0483e',width:width*0.9,alignSelf:'center',paddingVertical:height*0.02,marginTop:height*0.06}}>
         {
                       eventReducer?.loading ? 
                       <>
-                        <ActivityIndicator size={'small'} color={'#FFFFFF'} />
+                        <ActivityIndicator size={height*0.026} color={'#FFFFFF'} />
                       </>
                       :
                       <>
@@ -130,7 +130,7 @@ type Error = false|true;
 
     </>)}
     </Formik>
-    </>
+    </View>
   )
 }
 

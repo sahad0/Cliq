@@ -19,22 +19,22 @@ const Form2:FC<AppProps> = ({height,width,stateType,setStateType}) => {
 
   return (
     <>
-      <TouchableOpacity activeOpacity={1} style={{flexDirection:'row',justifyContent:'space-between',margin:height*0.05,marginTop:height*0.04}} onPress={() => setStateType('PUBLIC')} >
+      <TouchableOpacity activeOpacity={1} style={{flexDirection:'row',justifyContent:'space-between',margin:height*0.05,marginTop:height*0.03,marginBottom:height*0.02}} onPress={() => setStateType('PUBLIC')} >
           <View>
             <Text style={{color:'black',fontSize:height*0.02}}>Organization Channel</Text>
             <Text style={{color:'gray',fontSize:height*0.015,width:width*0.65}}>Anyone in your organization can find & join</Text>
           </View>
-          <View>
+          <View style={{alignSelf:'center'}}>
           <RadioButton value="PUBLIC"  status={ stateType === 'PUBLIC' ? 'checked' : 'unchecked' } onPress={() => setStateType('PUBLIC')}/>
           </View>
       </TouchableOpacity>
 
-      <TouchableOpacity activeOpacity={1} style={{flexDirection:'row',justifyContent:'space-between',margin:height*0.05,marginTop:0}} onPress={() => setStateType('PRIVATE')} >
+      <TouchableOpacity activeOpacity={1} style={{flexDirection:'row',justifyContent:'space-between',margin:height*0.05,marginTop:0,marginBottom:height*0.035}} onPress={() => setStateType('PRIVATE')} >
           <View>
           <Text style={{color:'black',fontSize:height*0.02}}>Private Channel</Text>
             <Text style={{color:'gray',fontSize:height*0.015,width:width*0.65}}>Only people you invite can find & join.</Text>
           </View>
-          <View>
+          <View style={{alignSelf:'center'}}>
           <RadioButton value="PRIVATE" status={ stateType === 'PRIVATE' ? 'checked' : 'unchecked' } onPress={() => setStateType('PRIVATE')}/>
           </View>
       </TouchableOpacity>

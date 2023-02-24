@@ -70,7 +70,7 @@ const CreateChannelFormBody:FC<AppProps> = ({height,width,organizationId}):JSX.E
     }
     <View style={{height:participants_list.length>0? height*0.18 : height*0.07,backgroundColor:'white',borderRadius:height*0.01,margin:height*0.02,elevation:2,marginTop:0}}>
         <TouchableOpacity onPress={()=>navigation.navigate('AddParticipants',{organization_id:organizationId})} style={{height:height*0.07,flexDirection:'row',borderRadius:height*0.01,backgroundColor:'white',alignItems:'center',justifyContent:'space-between',}}>
-            <Text style={{color:'black',marginLeft:width*0.04,fontSize:height*0.018}}>Add Participants</Text>
+            <Text style={{color:'black',fontSize:height*0.018,marginLeft:height*0.045}}>Add Participants</Text>
             <Ionicons name='person-add' color={'#5f5aad'} size={height*0.026} style={{marginRight:width*0.08}} />
 
         </TouchableOpacity>

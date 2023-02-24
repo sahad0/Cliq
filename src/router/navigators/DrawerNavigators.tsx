@@ -35,7 +35,7 @@ const DrawerNavigators = ():JSX.Element => {
 
   return (
    
-    <Drawer.Navigator useLegacyImplementation={false} drawerContent={DrawerContent} screenOptions={{headerShown:false}}>
+    <Drawer.Navigator useLegacyImplementation={false}  drawerContent={DrawerContent} screenOptions={{headerShown:false,}}>
         
         <Drawer.Screen name="CreateChannelStackNav" component={CreateChannelStackNav} /> 
 

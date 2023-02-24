@@ -65,8 +65,8 @@ type Success = 'success'|'failure'|'';
     {({ handleChange, handleBlur, handleSubmit,values ,errors }:FormikProps<Values>) => (
       
         <>
-          <TextInput placeholderTextColor={'gray'} onChangeText={handleChange('password')} value={values.password} onFocus={()=>setFocus({...focus,focus1:true})}  onBlur={()=>{handleBlur('email'),setFocus({...focus,focus1:false})}} placeholder={"Password *"} style={{color:'gray',fontFamily:'ZohoRegular',width:width*0.9,alignSelf:'center',borderBottomColor:focus.focus1 ? '#159AFF': 'lightgray',borderBottomWidth:1}} />
-          <TextInput placeholderTextColor={'gray'} secureTextEntry={true}  onChangeText={handleChange('passwordConfirmation')} value={values.passwordConfirmation} onFocus={()=>setFocus({...focus,focus2:true})}  onBlur={()=>{handleBlur('email'),setFocus({...focus,focus2:false})}} placeholder={"Confirm Password*"} style={{color:'gray',fontFamily:'ZohoRegular',width:width*0.9,alignSelf:'center',borderBottomColor:focus.focus2 ? '#159AFF': 'lightgray',borderBottomWidth:1,marginTop:height*0.03}} />
+          <TextInput placeholderTextColor={'gray'} onChangeText={handleChange('password')} value={values.password} onFocus={()=>setFocus({...focus,focus1:true})}  onBlur={()=>{handleBlur('email'),setFocus({...focus,focus1:false})}} placeholder={"Password *"} style={{color:'gray',fontFamily:'ZohoRegular',width:width*0.9,alignSelf:'center',borderBottomColor:focus.focus1 ? '#159AFF': 'lightgray',borderBottomWidth:1,fontSize:height*0.018}} />
+          <TextInput placeholderTextColor={'gray'} secureTextEntry={true}  onChangeText={handleChange('passwordConfirmation')} value={values.passwordConfirmation} onFocus={()=>setFocus({...focus,focus2:true})}  onBlur={()=>{handleBlur('email'),setFocus({...focus,focus2:false})}} placeholder={"Confirm Password*"} style={{color:'gray',fontFamily:'ZohoRegular',width:width*0.9,alignSelf:'center',borderBottomColor:focus.focus2 ? '#159AFF': 'lightgray',borderBottomWidth:1,marginTop:height*0.03,fontSize:height*0.018}} />
           {(errors.passwordConfirmation) &&  <><Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>
                     {errors.passwordConfirmation.toString()}
                   </Text></>}
@@ -79,16 +79,16 @@ type Success = 'success'|'failure'|'';
                   <Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>{'( New password cannot be same as old password! )'}</Text>
                   </>:<></>}
 
-          <TouchableOpacity onPress={handleSubmit} style={{paddingHorizontal:height*0.1,backgroundColor:'#159AFF',width:width*0.9,alignSelf:'center',paddingVertical:height*0.02,marginTop:height*0.1}}>
+          <TouchableOpacity onPress={handleSubmit} style={{borderRadius:height*0.008,paddingHorizontal:height*0.1,backgroundColor:'#159AFF',width:width*0.9,alignSelf:'center',paddingVertical:height*0.02,marginTop:height*0.1}}>
               
               {
                           eventReducer?.loading ? 
                           <>
-                            <ActivityIndicator size={'small'} color={'#FFFFFF'} />
+                            <ActivityIndicator size={height*0.026} color={'#FFFFFF'} />
                           </>
                           :
                           <>
-                            <Text style={{color:'white',alignSelf:'center',fontFamily:'ZohoRegular'}}>{success==='success'?'REDIRECTING..':'CONFIRM'}</Text>
+                            <Text style={{color:'white',alignSelf:'center',fontFamily:'ZohoRegular',fontSize:height*0.018}}>{success==='success'?'REDIRECTING..':'CONFIRM'}</Text>
     
                           </>
               }

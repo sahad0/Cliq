@@ -90,13 +90,13 @@ type focusBool = true|false;
             {({ handleChange, handleBlur, handleSubmit,values ,errors }:FormikProps<Values>) => (
               
             <>
-                 <TextInput placeholderTextColor={'gray'} onChangeText={handleChange('otp')} maxLength={6} keyboardType='number-pad' onFocus={()=>setFocus(true)} onBlur={()=>setFocus(false)} placeholder={'OTP *'} style={{color:'gray',fontFamily:'ZohoRegular',width:width*0.9,alignSelf:'center',borderBottomColor:focus ? '#159AFF': 'lightgray',borderBottomWidth:1}} />
+                 <TextInput placeholderTextColor={'gray'} onChangeText={handleChange('otp')} maxLength={6} keyboardType='number-pad' onFocus={()=>setFocus(true)} onBlur={()=>setFocus(false)} placeholder={'OTP *'} style={{color:'gray',fontFamily:'ZohoRegular',width:width*0.9,alignSelf:'center',borderBottomColor:focus ? '#159AFF': 'lightgray',borderBottomWidth:1,fontSize:height*0.018,marginLeft:height*0.02}} />
                  {(errors.otp) &&  <><Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>
                             {errors.otp.toString()}
                           </Text></>}
                 {error &&(
                     <>
-                    <Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>
+                    <Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.03}}>
                             {'Invalid OTP,Please try again!'}
                           </Text>
                     </>
@@ -106,29 +106,29 @@ type focusBool = true|false;
                     showTimer ? 
                         <>
                             <View style={{flexDirection:'row',margin:height*0.03,marginTop:height*0.04}}>
-                                <Text style={{color:'black',fontFamily:'ZohoRegular'}}> Resend Otp in</Text>
-                                <Text style={{color:'#159AFF',marginLeft:width*0.02}}>{counter + " s"}</Text>
+                                <Text style={{color:'black',fontFamily:'ZohoRegular',fontSize:height*0.018}}> Resend Otp in</Text>
+                                <Text style={{color:'#159AFF',marginLeft:width*0.02,fontSize:height*0.018}}>{counter + " s"}</Text>
                             </View>
                         </>
                         :
-                        <View style={{flexDirection:'row',margin:height*0.03,marginTop:height*0.04}}>
-                           <Text style={{color:'black',fontFamily:'ZohoRegular'}}>No code Recieved?</Text>
+                        <View style={{flexDirection:'row',margin:height*0.03,marginTop:height*0.04,alignItems:'center',}}>
+                           <Text style={{color:'black',fontFamily:'ZohoRegular',fontSize:height*0.018}}>No code Recieved?</Text>
                            <TouchableOpacity onPress={runTimer} style={{alignSelf:'flex-start'}} >
-                                <Text style={{color:'#159AFF',marginLeft:width*0.02}}>Resend OTP</Text>
+                                <Text style={{color:'#159AFF',marginLeft:width*0.02,fontSize:height*0.018,}}>Resend OTP</Text>
                             </TouchableOpacity> 
                         </View>
                 }
 
-                  <TouchableOpacity onPress={handleSubmit} style={{paddingHorizontal:height*0.1,backgroundColor:'#159AFF',width:width*0.9,alignSelf:'center',paddingVertical:height*0.02,marginTop:height*0.08,}}>
+                  <TouchableOpacity onPress={handleSubmit} style={{borderRadius:height*0.008,paddingHorizontal:height*0.1,backgroundColor:'#159AFF',width:width*0.9,alignSelf:'center',paddingVertical:height*0.02,marginTop:height*0.08,}}>
                       
                   {
                               eventReducer?.loading ? 
                               <>
-                                <ActivityIndicator size={'small'} color={'#FFFFFF'} />
+                                <ActivityIndicator size={height*0.026} color={'#FFFFFF'} />
                               </>
                               :
                               <>
-                                <Text style={{color:'white',alignSelf:'center',fontFamily:'ZohoRegular'}}>{'VERIFY'}</Text>
+                                <Text style={{color:'white',alignSelf:'center',fontFamily:'ZohoRegular',fontSize:height*0.018}}>{'VERIFY'}</Text>
         
                               </>
                   }

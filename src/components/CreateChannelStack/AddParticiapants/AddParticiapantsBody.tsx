@@ -121,7 +121,7 @@ export default class AddParticiapantsBody extends PureComponent<AppProps> {
 
     return (
         <>
-            <FlatList  legacyImplementation={false}  ListEmptyComponent={()=>(<ActivityIndicator color={'lightgray'} size={'large'} />)} showsVerticalScrollIndicator={false} style={{flex:1}} initialNumToRender={14} data={this.props.data} keyExtractor={this.keyExtractor}  renderItem={this.renderItem}   />
+            <FlatList  legacyImplementation={false}  ListEmptyComponent={()=>(<ActivityIndicator color={'lightgray'} size={this.props.height*0.026} />)} showsVerticalScrollIndicator={false} style={{flex:1}} initialNumToRender={14} data={this.props.data} keyExtractor={this.keyExtractor}  renderItem={this.renderItem}   />
             {
                 this.props.selected.length!==0 
                 &&

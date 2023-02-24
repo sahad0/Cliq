@@ -77,10 +77,10 @@ type checkMail = boolean;
       {
         visible ? 
         <>
-          <View style={{flexDirection:'row',margin:height*0.0258}}>
-            <Text style={{fontFamily:'ZohoRegular',color:'gray'}}>{user.email}</Text>
+          <View style={{flexDirection:'row',margin:height*0.03}}>
+            <Text style={{fontFamily:'ZohoRegular',color:'gray',fontSize:height*0.018,}}>{user.email}</Text>
             <TouchableOpacity style={{marginLeft:height*0.02}} onPress={()=>setVisible(false)}>
-              <Text style={{fontFamily:'ZohoRegular',color:'#159AFF',}}>Change</Text>
+              <Text style={{fontFamily:'ZohoRegular',color:'#159AFF',fontSize:height*0.017}}>Change</Text>
             </TouchableOpacity>
           </View>
           <AuthAnimated setUser={setUser} user={user}  height={height} width={width} inputStr='Password' btnStr='Next' nvgStr='' />
@@ -95,8 +95,8 @@ type checkMail = boolean;
             {({ handleChange, handleBlur, handleSubmit,values ,errors }:FormikProps<FormikValues>) => (
               
                 <>
-                  <TextInput placeholderTextColor={'gray'}  onChangeText={handleChange('email')} value={values.email} onFocus={()=>setFocus(true)}  onBlur={()=>{handleBlur('email'),setFocus(false)}} placeholder={"Email *"} style={{color:'gray',fontFamily:'ZohoRegular',width:width*0.9,alignSelf:'center',borderBottomColor:focus ? '#159AFF': 'lightgray',borderBottomWidth:1}} />
-                  {(errors.email) &&  <><Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.02,marginLeft:height*0.025}}>
+                  <TextInput placeholderTextColor={'gray'}  onChangeText={handleChange('email')} value={values.email} onFocus={()=>setFocus(true)}  onBlur={()=>{handleBlur('email'),setFocus(false)}} placeholder={"Email *"} style={{color:'gray',fontFamily:'ZohoRegular',width:width*0.9,alignSelf:'center',borderBottomColor:focus ? '#159AFF': 'lightgray',borderBottomWidth:1,fontSize:height*0.018}} />
+                  {(errors.email) &&  <><Text style={{fontSize:height*0.015,color:'red',fontFamily:'ZohoRegular',margin:height*0.06,marginLeft:height*0.03}}>
                     {errors.email.toString()}
                   </Text></>}
                     
@@ -108,16 +108,16 @@ type checkMail = boolean;
                     </>
                     }
 
-                  <TouchableOpacity onPress={handleSubmit} style={{paddingHorizontal:height*0.1,backgroundColor:'#159AFF',width:width*0.9,alignSelf:'center',paddingVertical:height*0.02,marginTop:height*0.1}}>
+                  <TouchableOpacity onPress={handleSubmit} style={{paddingHorizontal:height*0.1,backgroundColor:'#159AFF',width:width*0.9,alignSelf:'center',paddingVertical:height*0.02,marginTop:height*0.1,borderRadius:height*0.007}}>
                      
                      {
                       eventReducer?.loading ? 
                       <>
-                        <ActivityIndicator size={'small'} color={'#FFFFFF'} />
+                        <ActivityIndicator size={height*0.026} color={'#FFFFFF'} />
                       </>
                       :
                       <>
-                      <Text style={{color:'white',alignSelf:'center',fontFamily:'ZohoRegular'}}>{"NEXT"}</Text>
+                      <Text style={{color:'white',alignSelf:'center',fontFamily:'ZohoRegular',fontSize:height*0.018}}>{"NEXT"}</Text>
                       </>
                      }
                   </TouchableOpacity>
@@ -133,11 +133,11 @@ type checkMail = boolean;
       }
 
         <TouchableOpacity  onPress={()=>navigation.navigate('ForgotPassword')} style={{marginTop:height*0.06,alignSelf:'center'}}>
-           <Text style={{color:'#159AFF',alignSelf:'center',fontFamily:'ZohoBold',}}>Forgot Password?</Text>
+           <Text style={{color:'#159AFF',alignSelf:'center',fontFamily:'ZohoBold',fontSize:height*0.018,}}>Forgot Password?</Text>
 
         </TouchableOpacity>
 
-        <Text style={{color:'black',margin:height*0.03,marginTop:height*0.05,marginLeft:height*0.185,fontFamily:'ZohoRegular'}}>
+        <Text style={{color:'black',margin:height*0.03,marginTop:height*0.05,alignSelf:'center',fontFamily:'ZohoRegular',fontSize:height*0.018}}>
           Sign in using 
         </Text>
 
