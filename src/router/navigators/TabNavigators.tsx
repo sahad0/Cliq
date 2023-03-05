@@ -6,6 +6,7 @@ import Material from 'react-native-vector-icons/MaterialCommunityIcons'
 import ChannelDetails from '../../pages/CreateChannelStack/ChannelDetails'
 import WidgetList from '../../pages/chat/WidgetList'
 import ChatList from '../../pages/ChatListStack/ChatList'
+import { Pressable } from 'react-native'
 
 export type TabStackParams ={
   ChatList:undefined,
@@ -29,7 +30,8 @@ export default function TabNavigators():JSX.Element {
             tabBarIcon: ({size,focused,color}) => {
               return (
                 <View style={{backgroundColor:'white',width:width/3,alignItems:'center'}}>
-                  {
+                  <Ionicon name={focused?'call':'call-outline'} color={focused?'#5f5aad':'gray'} size={height*0.03} />
+                  {/* {
                     focused ?
                      <>
                       <Image source={require('../../assets/images/TabIcon/Widget.png')} style={{height:height*0.028,width:height*0.028}} resizeMode='contain' />
@@ -40,8 +42,8 @@ export default function TabNavigators():JSX.Element {
                      
                      </>
                      
-                  }
-                <Text style={{color: focused ? '#5f5aad' : 'gray',fontSize:height*0.015,marginBottom:height*0.015}}>Widgets</Text>
+                  } */}
+                <Text style={{color: focused ? '#5f5aad' : 'gray',fontSize:height*0.015,marginBottom:height*0.015}}>Calls</Text>
 
                 </View>
               );
@@ -54,7 +56,9 @@ export default function TabNavigators():JSX.Element {
             tabBarIcon: ({size,focused,color}) => {
               return (
                 <View style={{backgroundColor:'white',width:width/3,alignItems:'center'}}>
-                  {
+                  <Ionicon name={focused?'ios-chatbubbles-sharp':'ios-chatbubbles-outline'} color={focused?'#5f5aad':'gray'} size={height*0.03} />
+                 
+                  {/* {
                     focused?
                      <>
                      <Image source={require('../../assets/images/TabIcon/Chat.png')} style={{height:height*0.028,width:height*0.028}} resizeMode='contain' />
@@ -64,7 +68,7 @@ export default function TabNavigators():JSX.Element {
                     <>
                     <Image source={require('../../assets/images/TabIcon/Chat1.png')} style={{height:height*0.028,width:height*0.028}} resizeMode='contain' />
                     </>
-                  }
+                  } */}
                 
                 <Text style={{color: focused ? '#5f5aad' : 'gray',fontSize:height*0.015,marginBottom:height*0.015}}>Chats</Text>
 
@@ -79,8 +83,8 @@ export default function TabNavigators():JSX.Element {
             tabBarIcon: ({size,focused,color}) => {
               return (
                 <View style={{backgroundColor:'white',width:width/3,alignItems:'center'}}>
-
-                  {
+                  <Material name={focused?'account-group':'account-group-outline'} color={focused?'#5f5aad':'gray'} size={height*0.03} />
+                  {/* {
                     focused ? 
                     <>
                      <Image source={require('../../assets/images/TabIcon/Channel.png')} style={{height:height*0.028,width:height*0.028}} resizeMode='contain' />
@@ -91,7 +95,7 @@ export default function TabNavigators():JSX.Element {
                    <Image source={require('../../assets/images/TabIcon/Channel1.png')} style={{height:height*0.028,width:height*0.028}} resizeMode='contain' />
                     
                     </>
-                  }
+                  } */}
                 <Text style={{color: focused ? '#5f5aad' : 'gray',fontSize:height*0.015,marginBottom:height*0.015}}>Channels</Text>
                 
                 </View>

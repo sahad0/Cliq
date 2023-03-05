@@ -42,11 +42,11 @@ const persistor = persistStore(store);
 
 
 export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;4
+export type AppDispatch = typeof store.dispatch;
 
 
 
-axios.defaults.baseURL = 'https://prezz.live/api/';
+axios.defaults.baseURL = 'http://192.168.1.44:6969/api';
 
 
 

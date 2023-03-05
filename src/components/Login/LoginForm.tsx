@@ -145,9 +145,9 @@ type checkMail = boolean;
             <Image source={require('../../assets/images/google.png')} style={{height:height*0.05,width:height*0.05,alignSelf:'center'}} resizeMode='contain' />
         </TouchableOpacity> 
         <View style={{margin:height*0.03,flexDirection:'row',justifyContent:'center'}}>
-          <Text style={{fontFamily:'ZohoRegular',color:'gray'}}>Don't have Zoho account? </Text>
+          <Text style={{fontFamily:'ZohoRegular',color:'gray',fontSize:height*0.018}}>Don't have Zoho account? </Text>
           <TouchableOpacity onPress={()=>navigation.navigate('SignUp')}>
-            <Text style={{color:'#159AFF',alignSelf:'center',fontFamily:'ZohoBold',}}>Sign up now!</Text>
+            <Text style={{color:'#159AFF',alignSelf:'center',fontFamily:'ZohoBold',fontSize:height*0.018}}>Sign up now!</Text>
           </TouchableOpacity>
         </View>
 

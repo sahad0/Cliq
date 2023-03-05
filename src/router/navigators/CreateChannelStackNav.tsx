@@ -9,6 +9,7 @@ import AddParticipants from '../../pages/CreateChannelStack/AddParticipants';
 import InviteToOrg from '../../pages/ChatListStack/InviteToOrg';
 import QuickChat from '../../pages/ChatListStack/QuickChat';
 import ChatList from '../../pages/ChatListStack/ChatList';
+import Chat from '../../pages/ChatListStack/Chat';
 
 export  type ChannelStackParams = {
   TabNavigators:undefined,
@@ -19,6 +20,7 @@ export  type ChannelStackParams = {
   InviteToOrg:undefined,
   QuickChat:undefined,
   ChatList:undefined,
+  Chat:{id:string,name:string,},
 
   
 }
@@ -46,6 +48,9 @@ const CreateChannelStackNav = () => {
         <Stack.Screen  options={{animation:'slide_from_right'}} name='InviteToOrg' component={InviteToOrg} />
 
         <Stack.Screen  options={{animation:'slide_from_right'}} name='QuickChat' component={QuickChat} />
+
+        <Stack.Screen  options={{animation:'slide_from_right'}} name='Chat' component={Chat} />
+
 
 
     </Stack.Navigator>

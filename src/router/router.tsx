@@ -24,7 +24,7 @@ export default function Router():JSX.Element {
   return (
     
     <NavigationContainer >
-      {
+       {/* {
         !auth && (
           <AuthNav />
          )
@@ -34,11 +34,11 @@ export default function Router():JSX.Element {
           <NewUserStackNav />
         )
       }
-      {
-        auth && !newUser &&(
+      { 
+        auth && !newUser &&( */}
           <ExistingUserNav />
-        )
-      }  
+        {/* )
+      }    */}
       
 
          

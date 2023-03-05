@@ -16,9 +16,9 @@ const QuickChatIcon:FC<AppProps> = ({height,width}) => {
   const navigation = useNavigation<NativeStackNavigationProp<ChannelStackParams,'ChatList'>>();
 
   return (
-    <View style={{position:'absolute',bottom:0,right:0,margin:height*0.03,marginBottom:height*0.05,height:height*0.075,borderColor:'white',elevation:3,width:height*0.075,borderRadius:height,backgroundColor:'#5f5aad',alignItems:'center',justifyContent:'center'}}>
+    <View style={{position:'absolute',bottom:0,right:0,margin:height*0.03,marginBottom:height*0.034,height:height*0.07,borderColor:'white',elevation:3,width:height*0.07,borderRadius:height,backgroundColor:'#5f5aad',alignItems:'center',justifyContent:'center'}}>
       <TouchableOpacity onPress={()=>navigation.navigate('QuickChat')}>
-        <MatIcons name='square-edit-outline' size={height*0.035} color={'white'} />
+        <MatIcons name='square-edit-outline' size={height*0.032} color={'white'} />
       </TouchableOpacity>
     </View>
   )

@@ -79,7 +79,7 @@ const Form1:FC<AppProps> = ({height,width,focus,setFocus}) => {
   return (
    <View style={{backgroundColor:'white',borderColor:'gray',elevation:3,borderRadius:height*0.01,margin:height*0.02,alignItems:'center',justifyContent:'center'}}>
 
-   <View style={{margin:width*0.3,marginTop:width*0.08,marginBottom:width*0.09}}> 
+   <View style={{margin:width*0.3,marginTop:width*0.035,marginBottom:width*0.09}}> 
     
     <View style={{flexDirection:'row',width:width*0.7}}>
 
@@ -92,7 +92,7 @@ const Form1:FC<AppProps> = ({height,width,focus,setFocus}) => {
                 </>
                 :
                 <>
-                <Material style={{}} name='camera' size={height*0.03} color='lightgray' />
+                <Material  name='camera' size={height*0.04} color='lightgray' />
                 </>
             }
         </TouchableOpacity>

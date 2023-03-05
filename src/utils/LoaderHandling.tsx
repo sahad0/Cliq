@@ -1,3 +1,4 @@
+import { Action } from "redux";
 
 const requestStatus = (state:any,action:any) => {
     switch (action.type) {
@@ -15,7 +16,7 @@ const requestStatus = (state:any,action:any) => {
         };
     }
   };
-  type Istate = {
+  export type Istate = {
     loading:boolean,
   }
 

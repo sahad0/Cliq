@@ -3,6 +3,7 @@ import React, { Dispatch, FC, PureComponent, SetStateAction, useEffect, useRef, 
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import AddParticipantsExt from './AddParticipantsExt';
 import { Selected, SelectedState } from '../../../pages/CreateChannelStack/AddParticipants';
+import { Istate } from '../../../utils/LoaderHandling';
 
 export type ItemProps = {
         id:string,
@@ -28,6 +29,9 @@ interface AppProps  {
     data: ItemProps[];
     selected:Selected[],
     setSelected:Dispatch<SetStateAction<SelectedState>>,
+    eventReducer:{
+        loading?: boolean,
+    }|undefined
    
 }
 
@@ -38,7 +42,7 @@ interface AppProps  {
 const RenderItem:FC<RenderType> = memo(({item,height,width,addId,selected}):JSX.Element=>{
 
     let bouncyCheckboxRef:BouncyCheckbox|null =null;
-
+    
 
     return(
     <>
@@ -107,7 +111,7 @@ export default class AddParticiapantsBody extends PureComponent<AppProps> {
         this.props.setSelected(updated);
     }
 
-
+    
 
     keyExtractor = (item:ItemProps):string => item.id;
 
@@ -121,7 +125,16 @@ export default class AddParticiapantsBody extends PureComponent<AppProps> {
 
     return (
         <>
-            <FlatList  legacyImplementation={false}  ListEmptyComponent={()=>(<ActivityIndicator color={'lightgray'} size={this.props.height*0.026} />)} showsVerticalScrollIndicator={false} style={{flex:1}} initialNumToRender={14} data={this.props.data} keyExtractor={this.keyExtractor}  renderItem={this.renderItem}   />
+            <FlatList  legacyImplementation={false} getItemLayout={this.Layout}   showsVerticalScrollIndicator={false} style={{flex:1}} initialNumToRender={14} data={this.props.data} keyExtractor={this.keyExtractor}  renderItem={this.renderItem}   />
+            {this.props.eventReducer?.loading ??
+                 <View style={{position:'absolute',alignItems:'center',justifyContent:'center',flex:1,}}>
+                    <ActivityIndicator color={'red'} size={this.props.height*0.05}  style={{left:this.props.width*0.45,height:this.props.height}} />
+    
+                </View>
+            }
+
+            <Text style={{color:'red'}}>{typeof(this.props.eventReducer)}</Text>
+           
             {
                 this.props.selected.length!==0 
                 &&
